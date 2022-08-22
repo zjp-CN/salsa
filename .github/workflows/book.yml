@@ -3,9 +3,7 @@ name: Book
 on:
   push:
     branches:
-    - master
-    - staging
-    - trying
+    - Chinese
   pull_request:
     paths:
     - 'book/**'
@@ -40,7 +38,6 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     needs: book
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     steps:
     - uses: actions/download-artifact@v2
       with:
