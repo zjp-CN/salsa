@@ -1,6 +1,6 @@
 # Summary
 
-- [About salsa](./about_salsa.md)
+- [关于 salsa](./about_salsa.md)
 
 # How to use Salsa
 

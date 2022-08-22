@@ -1,18 +1,17 @@
-# About salsa
+# 什么是 salsa
 
-Salsa is a Rust framework for writing incremental, on-demand programs
--- these are programs that want to adapt to changes in their inputs,
-continuously producing a new output that is up-to-date. Salsa is based
-on the the incremental recompilation techniques that we built for
-rustc, and many (but not all) of its users are building compilers or
-other similar tooling.
+<img src="https://raw.githubusercontent.com/salsa-rs/logo/main/FerrisSalsa4-01.svg" alt="" width="300"/>
 
-If you'd like to learn more about Salsa, check out:
+Salsa 是一个用于编写增量 (incremental) 、按需 (on-demand) 程序的 Rust 框架 ——
+这些程序希望适应其输入的变化，持续地产生最新的输出。
 
-- The [overview](./overview.md), for a brief summary.
-- The [tutorial](./tutorial.md), for a detailed look.
-- You can also watch some of our [videos](./videos.md), though the content there is rather out of date.
+Salsa 以 rustc 构建的增量重新编译技术为基础，许多（但不是所有）使用 salsa
+的人都把它用来构建编译器或其他类似的工具。
 
-If you'd like to chat about Salsa, or you think you might like to
-contribute, please jump on to our Zulip instance at
-[salsa.zulipchat.com](https://salsa.zulipchat.com/).
+如果你想了解更多关于 salsa 的信息，请查看：
+
+* [概述](./overview.md)：一个简要的总结
+* [教程](./tutorial.md)：一个详细的说明
+* 一些[视频](./videos.md)，尽管其中的内容已经过时
+
+如果你想讨论 salsa，或者想要贡献，请转到我们的 [Zulip](https://salsa.zulipchat.com/)。
