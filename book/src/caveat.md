@@ -1,3 +1,4 @@
-> ⚠️ **IN-PROGRESS VERSION OF SALSA.** ⚠️
+> ⚠️ **Salsa 仍在进展中** ⚠️
 >
-> This page describes the unreleased "Salsa 2022" version, which is a major departure from older versions of salsa. The code here works but is only available on github and from the `salsa-2022` crate.
+> 本页描述了未发布的 Salsa 2022 版本，该版本与旧版本大不相同。此处的代码有效，但仅在
+> github 和 `salsa-2022` crate 中可用。

@@ -2,9 +2,9 @@
 
 - [关于 salsa](./about_salsa.md)
 
-# How to use Salsa
+# 如何使用 Salsa
 
-- [Overview](./overview.md)
+- [概述](./overview.md)
 - [Tutorial: calc language](./tutorial.md)
   - [Basic structure](./tutorial/structure.md)
   - [Jars and databases](./tutorial/jar.md)
