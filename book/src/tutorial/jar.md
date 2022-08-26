@@ -1,72 +1,79 @@
-# Jars and databases
+# Jar 和数据库
 
-Before we can define the interesting parts of our Salsa program, we have to setup a bit of structure that defines the Salsa **database**.
-The database is a struct that ultimately stores all of Salsa's intermediate state, such as the memoized return values from [tracked functions].
+在定义 Salsa 程序的有趣部分之前，我们必须先定义 Salsa 数据库的结构体。
 
-[tracked functions]: ../overview.md#tracked-functions
+数据库是一个结构体，它最终存储 Salsa 的所有中间状态，例如来自[跟踪函数][tracked-functions]的被记忆的 (memoized) 返回值。
 
-The database itself is defined in terms of intermediate structures, called **jars**[^jar], which themselves contain the data for each function.
-This setup allows Salsa programs to be divided amongst many crates.
-Typically, you define one jar struct per crate, and then when you construct the final database, you simply list the jar structs.
-This permits the crates to define private functions and other things that are members of the jar struct, but not known directly to the database.
+[tracked-functions]: ../overview.html#tracked-fn
 
-[^jar]: Jars of salsa -- get it? Get it??[^java]
+数据库本身是以一些中间结构 (intermediate structure) 的形式定义的，这些中间结构被称为 **jars**[^jar]，并包含每个函数的数据。
 
-[^java]: OK, maybe it also brings to mind Java `.jar` files, but there's no real relationship. A jar is just a Rust struct, not a packaging format.
+这种设置允许 Salsa 程序在多个 crates 中划分功能。
 
-## Defining a jar struct
+通常，你为每个 crate 定义一个 Jar 结构，然后在构建最终的数据库时，只需列出 Jar 结构。
 
-To define a jar struct, you create a tuple struct with the `#[salsa::jar]` annotation:
+这让 crates 定义私有函数和其他属于 Jar 结构的内容，但数据库不直接知道这些内容。
+
+[^jar]: 一罐 Salsa 酱。嗯，明白了吗？明白为什么叫 Jar 了吗？[^java]
+
+[^java]: 好吧，也许它也会让人联想到 Java 的 `.jar` 文件，但它们并没有真正的关系。Jar 只是一个 Rust 结构体，而不是一种包装格式。
+
+## 定义 Jar 结构体
+
+给一个元组结构体使用 `#[salsa::jar]` 属性来定义 Jar 结构体：
 
 ```rust
 {{#include ../../../calc-example/calc/src/main.rs:jar_struct}}
 ```
 
-Although it's not required, it's highly recommended to put the `jar` struct at the root of your crate, so that it can be referred to as `crate::Jar`.
-All of the other Salsa annotations reference a jar struct, and they all default to the path `crate::Jar`. 
-If you put the jar somewhere else, you will have to override that default.
+虽然这不是必需的，但强烈建议：将 `Jar` 结构放在你的 crate 的根模块，这样它就可以通过 `crate::Jar` 路径使用。
 
-## Defining the database trait
+所有其他的 salsa 注释都引用了 Jar 结构体，并且它们都默认 `crate::Jar` 路径。如果你将 Jar 放在其他地方，则必须覆盖该默认值。
 
-The `#[salsa::jar]` annotation also includes a `db = Db` field. 
-The value of this field (normally `Db`) is the name of a trait that represents the database.
-Salsa programs never refer *directly* to the database; instead, they take a `&dyn Db` argument.
-This allows for separate compilation, where you have a database that contains the data for two jars, but those jars don't depend on one another.
+## 定义数据库 trait
 
-The database trait for our `calc` crate is very simple:
+`#[salsa::jar]` 中还包含 `db = Db` 字段。此字段的值（通常为 `Db` ）代表数据库的 trait 的名称。
+
+Salsa 程序从不直接引用数据库；相反，它们使用 `&dyn Db` 参数。
+
+这可以单独编译：你有一个数据库，其中包含两个 Jars 的数据，但这些 Jars 彼此不依赖。
+
+我们的 `calc` crate 的数据库 trait 非常简单：
 
 ```rust
 {{#include ../../../calc-example/calc/src/main.rs:jar_db}}
 ```
 
-When you define a database trait like `Db`, the one thing that is required is that it must have a supertrait `salsa::DbWithJar<Jar>`,
-where `Jar` is the jar struct. If your jar depends on other jars, you can have multiple such supertraits (e.g., `salsa::DbWithJar<other_crate::Jar>`).
+当你定义像 `Db` 这样的数据库 trait 时，需要做的一件事是，它必须有一个 supertrait `salsa::DbWithJar<Jar>`，其中 `Jar` 是 Jar 结构体。
 
-Typically the `Db` trait has no other members or supertraits, but you are also free to add whatever other things you want in the trait.
-When you define your final database, it will implement the trait, and you can then define the implementation of those other things.
-This allows you to create a way for your jar to request context or other info from the database that is not moderated through Salsa,
-should you need that.
+如果你的 Jar 依赖于其他 Jar，则可拥有多个这样的超特征（例如， `salsa::DbWithJar<other_crate::Jar>`）。
 
-## Implementing the database trait for the jar
+通常情况下，`Db` trait 没有其他成员或 supertraits，但你也可以自由地在该 trait 中添加任何你想要的其他东西。
 
-The `Db` trait must be implemented by the database struct.
-We're going to define the database struct in a [later section](./db.md),
-and one option would be to simply implement the jar `Db` trait there.
-However, since we don't define any custom logic in the trait,
-a common choice is to write a blanket impl for any type that implements `DbWithJar<Jar>`,
-and that's what we do here:
+当你定义最终的数据库时，它将实现这个 `Db` trait，然后你可以定义这些其他内容的实现。
+
+这让你为 Jar 在需要时从数据库请求上下文或其他信息，而不是通过 Salsa 进行管理。
+
+## 给 Jar 实现数据库 trait
+
+必须给数据库结构体实现 `Db` trait。
+
+我们将在[后面的小节](./db.md)中定义数据库结构体，一种方式是在那里简单地实现 `Db` trait。
+
+然而，由于我们没有在 trait 中定义任何逻辑，一种常见的做法是为实现了 `DbWithJar<Jar>` 的任何类型编写一个
+blanket impl，像这样：
 
 ```rust
 {{#include ../../../calc-example/calc/src/main.rs:jar_db_impl}}
 ```
 
-## Summary
+## 总结
 
-If the concept of a jar seems a bit abstract to you, don't overthink it. The TL;DR is that when you create a Salsa program, you need to perform the following steps:
+如果 Jar 的概念对你来说有点抽象，不要想太多。长话短说，它是指在创建 Salsa 程序时，你需要做以下几件事：
 
-- In each of your crates:
-  - Define a `#[salsa::jar(db = Db)]` struct, typically at `crate::Jar`, and list each of your various Salsa-annotated things inside of it.
-  - Define a `Db` trait, typically at `crate::Db`, that you will use in memoized functions and elsewhere to refer to the database struct.
-- Once, typically in your final crate:
-  - Define a database `D`, as described in the [next section](./db.md), that will contain a list of each of the jars for each of your crates.
-  - Implement the `Db` traits for each jar for your database type `D` (often we do this through blanket impls in the jar crates).
+* 在每个 crates 中：
+  * 定义一个带 `#[salsa::jar(db = Db)]` 的结构体，且通常位于根模块，所以它是 `crate::Jar`，并在其中列出各种带 salsa 注释的东西。
+  * 定义一个 `Db` trait，通常为 `crate::Db` ，你将在 memoized 函数和其他地方使用它来引用数据库结构体。
+* 只做一次，通常在最后一个 crate 中：
+  * 定义一个数据库 `D`，如[下一节](./db.md)所述，它为每个 crate 的 Jar 的列表
+  * 给数据库类型 `D` 的每个 Jar 实现 `Db` trait（通常通过 blanket impl 实现）

@@ -1,11 +1,12 @@
-# Basic structure
+# 基本结构
 
-Before we do anything with Salsa, let's talk about the basic structure of the calc compiler.
-Part of Salsa's design is that you are able to write programs that feel 'pretty close' to what a natural Rust program looks like.
+在使用 Salsa 之前，让我们先来讨论一下 calc 编译器的基本结构。
 
-## Example program
+Salsa 所设计的一部分内容是，你能够编写感觉“非常接近”正常 Rust 程序的程序。
 
-This is our example calc program:
+## 示例程序
+
+这是我们的示例 calc 程序：
 
 ```
 x = 5
@@ -14,9 +15,9 @@ z = x + y * 3
 print z
 ```
 
-## Parser
+## 解析器
 
-The calc compiler takes as input a program, represented by a string:
+calc 编译器接受由字符串表示的程序作为输入：
 
 ```rust
 struct ProgramSource {
@@ -24,7 +25,7 @@ struct ProgramSource {
 }
 ```
 
-The first thing it does it to parse that string into a series of statements that look something like the following pseudo-Rust:[^lexer]
+它做的第一件事是将该字符串解析为一系列语句，这些语句看起来类似于下面的伪 Rust 代码[^lexer]：
 
 ```rust
 enum Statement {
@@ -42,7 +43,7 @@ struct Function {
 }
 ```
 
-where an expression is something like this (pseudo-Rust, because the `Expression` enum is recursive):
+其中，表达式类似于这样（伪 Rust 代码，因为 `Expression` 枚举是递归的）：
 
 ```rust
 enum Expression {
@@ -60,24 +61,23 @@ enum Op {
 }
 ```
 
-Finally, for function/variable names, the `FunctionId` and `VariableId` types will be interned strings:
+最后，对于函数/变量名， `FunctionId` 和 `VariableId` 类型将是被驻留的 (interned) 字符串：
 
 ```rust
 type FunctionId = /* interned string */;
 type VariableId = /* interned string */;
 ```
 
-[^lexer]: Because calc is so simple, we don't have to bother separating out the lexer from the parser.
+[^lexer]: 因为 calc 非常简单，所以我们不必费心将词法分析器 (lexer) 和解析器 (parser) 分开。
 
-## Checker
+## 检查器
 
-The "checker" has the job of ensuring that the user only references variables that have been defined.
-We're going to write the checker in a "context-less" style,
-which is a bit less intuitive but allows for more incremental re-use.
-The idea is to compute, for a given expression, which variables it references.
-Then there is a function `check` which ensures that those variables are a subset of those that are already defined.
+“检查器” (checker) 的任务是确保用户只引用已定义的变量。
 
-## Interpreter
+我们将以一种“无上下文”的风格编写检查器，这有点不直观，但允许更多的增量复用。
 
-The interpreter will execute the program and print the result. We don't bother with much incremental re-use here,
-though it's certainly possible.
+其思想是为给定的表达式计算它引用的变量。然后有一个函数 `check`，它确保这些变量是已经定义的变量的子集。
+
+## 翻译器
+
+翻译器 (interpreter) 将执行程序并打印结果。这里不需要太多的增量复用，尽管这当然是可能的。

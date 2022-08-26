@@ -1,52 +1,56 @@
-# Defining the database struct
+# 定义数据库结构体
 
-Now that we have defined a [jar](./jar.md), we need to create the **database struct**.
-The database struct is where all the jars come together.
-Typically it is only used by the "driver" of your application;
-the one which starts up the program, supplies the inputs, and relays the outputs.
+现在我们已经定义了 [Jar](./jar.md)，接下来要创建数据库结构体。
 
-In `calc`, the database struct is in the [`db`] module, and it looks like this:
+数据库结构体是所有 Jars 聚集在一起的地方。通常，它只由应用程序的“驱动程序” (driver)
+使用：启动程序、提供输入的程序和转发输出的程序。
 
-[`db`]: https://github.com/salsa-rs/salsa/blob/master/calc-example/calc/src/db.rs
+在 `calc` 中，数据库结构体在 [`db` 模块]中，看起来是这样的：
+
+[`db` 模块]: https://github.com/salsa-rs/salsa/blob/master/calc-example/calc/src/db.rs
 
 ```rust
 {{#include ../../../calc-example/calc/src/db.rs:db_struct}}
 ```
 
-The `#[salsa::db(...)]` attribute takes a list of all the jars to include.
-The struct must have a field named `storage` whose type is `salsa::Storage<Self>`, but it can also contain whatever other fields you want.
-The `storage` struct owns all the data for the jars listed in the `db` attribute.
+`#[salsa::db(...)]` 属性把要包含的所有 Jars 作为参数。
 
-The `salsa::db` attribute autogenerates a bunch of impls for things like the `salsa::HasJar<crate::Jar>` trait that we saw earlier.
+该结构体必须有一个名为 `storage` 的字段，其类型为 `salsa::Storage<Self>`，但此外也可以包含你想要的任何其他字段。
 
-## Implementing the `salsa::Database` trait
+`storage` 结构体拥有 `db` 属性中列出的 Jars 的所有数据。
 
-In addition to the struct itself, we must add an impl of `salsa::Database`:
+`#[salsa::db(...)]` 属性为我们前面看到的 `salsa::HasJar<crate::Jar>` trait 自动生成一组实现。这意味着要
+
+## 实现 `salsa::Database` trait
+
+除了结构体本身，我们还必须添加一个 `salsa::Database` 实现：
 
 ```rust
 {{#include ../../../calc-example/calc/src/db.rs:db_impl}}
 ```
 
-## Implementing the `salsa::ParallelDatabase` trait
+## 实现 `salsa::ParallDatabase` trait
 
-If you want to permit accessing your database from multiple threads at once, then you also need to implement the `ParallelDatabase` trait:
+如果你想要允许同时从多个线程访问数据库，那么你还需要实现 `ParallDatabase` trait：
 
 ```rust
 {{#include ../../../calc-example/calc/src/db.rs:par_db_impl}}
 ```
 
-## Implementing the `Default` trait
+## 实现 `Default` trait
 
-It's not required, but implementing the `Default` trait is often a convenient way to let users instantiate your database:
+这不是必需的，但实现 `Default` 通常是让使用者实例化你的数据库的一种便捷方式：
 
 ```rust
 {{#include ../../../calc-example/calc/src/db.rs:default_impl}}
 ```
 
-## Implementing the traits for each jar
+## 给每个 Jar 实现 traits
 
-The `Database` struct also needs to implement the [database traits for each jar](./jar.md#database-trait-for-the-jar).
-In our case, though, we already wrote that impl as a [blanket impl alongside the jar itself](./jar.md#implementing-the-database-trait-for-the-jar),
-so no action is needed.
-This is the recommended strategy unless your trait has custom members that depend on fields of the `Database` itself
-(for example, sometimes the `Database` holds some kind of custom resource that you want to give access to).
+`Database` 结构体还需要让每个 Jar 实现数据库 trait。
+
+不过，在我们的例子中，已经[通过 blanket impl] 为做到了，因此不需要执行任何操作。
+
+这是推荐的做法，除非你的 trait 依赖于 `Database` 本身的字段的自定义成员（例如，有时 `Database` 包含你想要访问的某种自定义资源）。
+
+[通过 blanket impl]: jar.html#给-jar-实现数据库-trait

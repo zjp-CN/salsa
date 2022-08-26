@@ -44,7 +44,7 @@ loop {
 
 该数据库还用于实现驻留（interning，指制作一个值的规范版本，然后可以复制该值、进行廉价的相等比较）和其他方便的 Salsa 特性。
 
-## #[input]
+## `#[input]`
 
 每个 Salsa 程序都从一个输入 (input) 开始。
 
@@ -126,7 +126,7 @@ file.set_contents(&mut db, String::from("fn foo() { /* add a comment */ }"));
 
 [^setter]: 译者注：setter 名称就是 `set_字段名`。
 
-## #[tracked] fn
+## `#[tracked]` fn
 
 一旦定义了输入，接下来要定义的就是 **跟踪函数** (tracked function)：
 
@@ -163,7 +163,7 @@ Salsa 这个名字的由来[^salsa-name]。
 如果你希望从数据库返回引用，则跟踪函数也可以使用 `#[return_ref]` 进行标注。例如，如果 `parse_file`
 函数被这样注释，那么调用者实际上会得到 `&Ast`。
 
-## #[tracked] struct
+## `#[tracked]` struct
 
 **跟踪结构体** (tracked struct) 是在计算期间创建的中间结构。
 
