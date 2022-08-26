@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="sidebar-visible no-js ayu">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Overview - Salsa</title>
+        <title>概述 - Salsa（中文介绍）</title>
                 
 
         <!-- Custom HTML head -->
@@ -19,7 +19,6 @@
                 <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
-                <link rel="stylesheet" href="css/print.css" media="print">
         
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
@@ -32,13 +31,14 @@
 
         <!-- Custom theme stylesheets -->
                 <link rel="stylesheet" href="mermaid.css">
+                <link rel="stylesheet" href="theme/pagetoc.css">
         
             </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -64,7 +64,7 @@
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
-            html.classList.remove('light')
+            html.classList.remove('ayu')
             html.classList.add(theme);
             html.classList.add('js');
         </script>
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="about_salsa.html"><strong aria-hidden="true">1.</strong> About salsa</a></li><li class="chapter-item expanded affix "><li class="part-title">How to use Salsa</li><li class="chapter-item expanded "><a href="overview.html" class="active"><strong aria-hidden="true">2.</strong> Overview</a></li><li class="chapter-item expanded "><a href="tutorial.html"><strong aria-hidden="true">3.</strong> Tutorial: calc language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tutorial/structure.html"><strong aria-hidden="true">3.1.</strong> Basic structure</a></li><li class="chapter-item expanded "><a href="tutorial/jar.html"><strong aria-hidden="true">3.2.</strong> Jars and databases</a></li><li class="chapter-item expanded "><a href="tutorial/db.html"><strong aria-hidden="true">3.3.</strong> Defining the database struct</a></li><li class="chapter-item expanded "><a href="tutorial/ir.html"><strong aria-hidden="true">3.4.</strong> Defining the IR: the various &quot;salsa structs&quot;</a></li><li class="chapter-item expanded "><a href="tutorial/parser.html"><strong aria-hidden="true">3.5.</strong> Defining the parser: memoized functions and inputs</a></li><li class="chapter-item expanded "><a href="tutorial/accumulators.html"><strong aria-hidden="true">3.6.</strong> Defining the parser: reporting errors</a></li><li class="chapter-item expanded "><a href="tutorial/debug.html"><strong aria-hidden="true">3.7.</strong> Defining the parser: debug impls and testing</a></li><li class="chapter-item expanded "><a href="tutorial/checker.html"><strong aria-hidden="true">3.8.</strong> Defining the checker</a></li><li class="chapter-item expanded "><a href="tutorial/interpreter.html"><strong aria-hidden="true">3.9.</strong> Defining the interpreter</a></li></ol></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="reference/algorithm.html"><strong aria-hidden="true">4.1.</strong> Algorithm</a></li></ol></li><li class="chapter-item expanded "><a href="common_patterns.html"><strong aria-hidden="true">5.</strong> Common patterns</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="common_patterns/selection.html"><strong aria-hidden="true">5.1.</strong> Selection</a></li><li class="chapter-item expanded "><a href="common_patterns/on_demand_inputs.html"><strong aria-hidden="true">5.2.</strong> On-demand (Lazy) inputs</a></li></ol></li><li class="chapter-item expanded "><a href="tuning.html"><strong aria-hidden="true">6.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="cycles.html"><strong aria-hidden="true">7.</strong> Cycle handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cycles/fallback.html"><strong aria-hidden="true">7.1.</strong> Recovering via fallback</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">How Salsa works internally</li><li class="chapter-item expanded "><a href="how_salsa_works.html"><strong aria-hidden="true">8.</strong> How Salsa works</a></li><li class="chapter-item expanded "><a href="videos.html"><strong aria-hidden="true">9.</strong> Videos</a></li><li class="chapter-item expanded "><a href="plumbing.html"><strong aria-hidden="true">10.</strong> Plumbing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plumbing/jars_and_ingredients.html"><strong aria-hidden="true">10.1.</strong> Jars and ingredients</a></li><li class="chapter-item expanded "><a href="plumbing/database_and_runtime.html"><strong aria-hidden="true">10.2.</strong> Databases and runtime</a></li><li class="chapter-item expanded "><a href="plumbing/query_ops.html"><strong aria-hidden="true">10.3.</strong> Query operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plumbing/maybe_changed_after.html"><strong aria-hidden="true">10.3.1.</strong> maybe changed after</a></li><li class="chapter-item expanded "><a href="plumbing/fetch.html"><strong aria-hidden="true">10.3.2.</strong> Fetch</a></li><li class="chapter-item expanded "><a href="plumbing/derived_flowchart.html"><strong aria-hidden="true">10.3.3.</strong> Derived queries flowchart</a></li><li class="chapter-item expanded "><a href="plumbing/cycles.html"><strong aria-hidden="true">10.3.4.</strong> Cycle handling</a></li></ol></li><li class="chapter-item expanded "><a href="plumbing/terminology.html"><strong aria-hidden="true">10.4.</strong> Terminology</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plumbing/terminology/backdate.html"><strong aria-hidden="true">10.4.1.</strong> Backdate</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/changed_at.html"><strong aria-hidden="true">10.4.2.</strong> Changed at</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/dependency.html"><strong aria-hidden="true">10.4.3.</strong> Dependency</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/derived_query.html"><strong aria-hidden="true">10.4.4.</strong> Derived query</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/durability.html"><strong aria-hidden="true">10.4.5.</strong> Durability</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/input_query.html"><strong aria-hidden="true">10.4.6.</strong> Input query</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/ingredient.html"><strong aria-hidden="true">10.4.7.</strong> Ingredient</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/LRU.html"><strong aria-hidden="true">10.4.8.</strong> LRU</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/memo.html"><strong aria-hidden="true">10.4.9.</strong> Memo</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/query.html"><strong aria-hidden="true">10.4.10.</strong> Query</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/query_function.html"><strong aria-hidden="true">10.4.11.</strong> Query function</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/revision.html"><strong aria-hidden="true">10.4.12.</strong> Revision</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/salsa_item.html"><strong aria-hidden="true">10.4.13.</strong> Salsa item</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/salsa_struct.html"><strong aria-hidden="true">10.4.14.</strong> Salsa struct</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/untracked.html"><strong aria-hidden="true">10.4.15.</strong> Untracked dependency</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/verified.html"><strong aria-hidden="true">10.4.16.</strong> Verified</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="meta.html"><strong aria-hidden="true">11.</strong> Meta: about the book itself</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="about_salsa.html"><strong aria-hidden="true">1.</strong> 关于 salsa</a></li><li class="chapter-item expanded affix "><li class="part-title">如何使用 Salsa</li><li class="chapter-item expanded "><a href="overview.html" class="active"><strong aria-hidden="true">2.</strong> 概述</a></li><li class="chapter-item expanded "><a href="tutorial.html"><strong aria-hidden="true">3.</strong> 教程： calc 语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tutorial/structure.html"><strong aria-hidden="true">3.1.</strong> 基本结构</a></li><li class="chapter-item expanded "><a href="tutorial/jar.html"><strong aria-hidden="true">3.2.</strong> Jars 和数据库</a></li><li class="chapter-item expanded "><a href="tutorial/db.html"><strong aria-hidden="true">3.3.</strong> 定义数据库结构体</a></li><li class="chapter-item expanded "><a href="tutorial/ir.html"><strong aria-hidden="true">3.4.</strong> 定义 IR：各种 Salsa 结构体</a></li><li class="chapter-item expanded "><a href="tutorial/parser.html"><strong aria-hidden="true">3.5.</strong> 定义解析器：存储函数的值和输入</a></li><li class="chapter-item expanded "><a href="tutorial/accumulators.html"><strong aria-hidden="true">3.6.</strong> 定义解析器：报告错误</a></li><li class="chapter-item expanded "><a href="tutorial/debug.html"><strong aria-hidden="true">3.7.</strong> Defining the parser: debug impls and testing</a></li><li class="chapter-item expanded "><a href="tutorial/checker.html"><strong aria-hidden="true">3.8.</strong> Defining the checker</a></li><li class="chapter-item expanded "><a href="tutorial/interpreter.html"><strong aria-hidden="true">3.9.</strong> Defining the interpreter</a></li></ol></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="reference/algorithm.html"><strong aria-hidden="true">4.1.</strong> Algorithm</a></li></ol></li><li class="chapter-item expanded "><a href="common_patterns.html"><strong aria-hidden="true">5.</strong> Common patterns</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="common_patterns/selection.html"><strong aria-hidden="true">5.1.</strong> Selection</a></li><li class="chapter-item expanded "><a href="common_patterns/on_demand_inputs.html"><strong aria-hidden="true">5.2.</strong> On-demand (Lazy) inputs</a></li></ol></li><li class="chapter-item expanded "><a href="tuning.html"><strong aria-hidden="true">6.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="cycles.html"><strong aria-hidden="true">7.</strong> Cycle handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cycles/fallback.html"><strong aria-hidden="true">7.1.</strong> Recovering via fallback</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">How Salsa works internally</li><li class="chapter-item expanded "><a href="how_salsa_works.html"><strong aria-hidden="true">8.</strong> How Salsa works</a></li><li class="chapter-item expanded "><a href="videos.html"><strong aria-hidden="true">9.</strong> Videos</a></li><li class="chapter-item expanded "><a href="plumbing.html"><strong aria-hidden="true">10.</strong> Plumbing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plumbing/jars_and_ingredients.html"><strong aria-hidden="true">10.1.</strong> Jars and ingredients</a></li><li class="chapter-item expanded "><a href="plumbing/database_and_runtime.html"><strong aria-hidden="true">10.2.</strong> Databases and runtime</a></li><li class="chapter-item expanded "><a href="plumbing/query_ops.html"><strong aria-hidden="true">10.3.</strong> Query operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plumbing/maybe_changed_after.html"><strong aria-hidden="true">10.3.1.</strong> maybe changed after</a></li><li class="chapter-item expanded "><a href="plumbing/fetch.html"><strong aria-hidden="true">10.3.2.</strong> Fetch</a></li><li class="chapter-item expanded "><a href="plumbing/derived_flowchart.html"><strong aria-hidden="true">10.3.3.</strong> Derived queries flowchart</a></li><li class="chapter-item expanded "><a href="plumbing/cycles.html"><strong aria-hidden="true">10.3.4.</strong> Cycle handling</a></li></ol></li><li class="chapter-item expanded "><a href="plumbing/terminology.html"><strong aria-hidden="true">10.4.</strong> Terminology</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plumbing/terminology/backdate.html"><strong aria-hidden="true">10.4.1.</strong> Backdate</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/changed_at.html"><strong aria-hidden="true">10.4.2.</strong> Changed at</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/dependency.html"><strong aria-hidden="true">10.4.3.</strong> Dependency</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/derived_query.html"><strong aria-hidden="true">10.4.4.</strong> Derived query</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/durability.html"><strong aria-hidden="true">10.4.5.</strong> Durability</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/input_query.html"><strong aria-hidden="true">10.4.6.</strong> Input query</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/ingredient.html"><strong aria-hidden="true">10.4.7.</strong> Ingredient</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/LRU.html"><strong aria-hidden="true">10.4.8.</strong> LRU</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/memo.html"><strong aria-hidden="true">10.4.9.</strong> Memo</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/query.html"><strong aria-hidden="true">10.4.10.</strong> Query</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/query_function.html"><strong aria-hidden="true">10.4.11.</strong> Query function</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/revision.html"><strong aria-hidden="true">10.4.12.</strong> Revision</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/salsa_item.html"><strong aria-hidden="true">10.4.13.</strong> Salsa item</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/salsa_struct.html"><strong aria-hidden="true">10.4.14.</strong> Salsa struct</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/untracked.html"><strong aria-hidden="true">10.4.15.</strong> Untracked dependency</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/verified.html"><strong aria-hidden="true">10.4.16.</strong> Verified</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">Salsa RFCs</li><li class="chapter-item expanded "><a href="rfcs.html"><strong aria-hidden="true">11.</strong> RFCs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="rfcs/template.html"><strong aria-hidden="true">11.1.</strong> Template</a></li><li class="chapter-item expanded "><a href="rfcs/RFC0001-Query-Group-Traits.html"><strong aria-hidden="true">11.2.</strong> RFC 0001: Query group traits</a></li><li class="chapter-item expanded "><a href="rfcs/RFC0002-Intern-Queries.html"><strong aria-hidden="true">11.3.</strong> RFC 0002: Intern queries</a></li><li class="chapter-item expanded "><a href="rfcs/RFC0003-Query-Dependencies.html"><strong aria-hidden="true">11.4.</strong> RFC 0003: Query dependencies</a></li><li class="chapter-item expanded "><a href="rfcs/RFC0004-LRU.html"><strong aria-hidden="true">11.5.</strong> RFC 0004: LRU</a></li><li class="chapter-item expanded "><a href="rfcs/RFC0005-Durability.html"><strong aria-hidden="true">11.6.</strong> RFC 0005: Durability</a></li><li class="chapter-item expanded "><a href="rfcs/RFC0006-Dynamic-Databases.html"><strong aria-hidden="true">11.7.</strong> RFC 0006: Dynamic database</a></li><li class="chapter-item expanded "><a href="rfcs/RFC0007-Opinionated-Cancelation.html"><strong aria-hidden="true">11.8.</strong> RFC 0007: Opinionated cancelation</a></li><li class="chapter-item expanded "><a href="rfcs/RFC0008-Remove-Garbage-Collection.html"><strong aria-hidden="true">11.9.</strong> RFC 0008: Remove garbage collection</a></li><li class="chapter-item expanded "><a href="rfcs/RFC0009-Cycle-recovery.html"><strong aria-hidden="true">11.10.</strong> RFC 0009: Cycle recovery</a></li><li class="chapter-item expanded "><a href="rfcs/RFC0010-Slot-no-more.html"><strong aria-hidden="true">11.11.</strong> RFC 0010: Slot no more</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="meta.html"><strong aria-hidden="true">12.</strong> Meta: about the book itself</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -101,24 +101,27 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
                         </ul>
                                                 <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                                             </div>
 
-                    <h1 class="menu-title">Salsa</h1>
+                    <h1 class="menu-title">Salsa（中文介绍）</h1>
 
                     <div class="right-buttons">
-                                                <a href="print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                                                                        <a href="https://github.com/zjp-CN/salsa/tree/Chinese" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                                        
+                                                                        <a href="https://github.com/zjp-CN/salsa/edit/Chinese/book/src/overview.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -144,169 +147,150 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="salsa-overview"><a class="header" href="#salsa-overview">Salsa overview</a></h1>
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <h1 id="salsa-概述"><a class="header" href="#salsa-概述">Salsa 概述</a></h1>
 <blockquote>
-<p>⚠️ <strong>IN-PROGRESS VERSION OF SALSA.</strong> ⚠️</p>
-<p>This page describes the unreleased &quot;Salsa 2022&quot; version, which is a major departure from older versions of salsa. The code here works but is only available on github and from the <code>salsa-2022</code> crate.</p>
+<p>⚠️ <strong>Salsa 仍在进展中</strong> ⚠️</p>
+<p>本页描述了未发布的 Salsa 2022 版本，该版本与旧版本大不相同。此处的代码有效，但仅在
+github 和 <code>salsa-2022</code> crate 中可用。</p>
 </blockquote>
-<p>This page contains a brief overview of the pieces of a Salsa program.
-For a more detailed look, check out the <a href="./tutorial.html">tutorial</a>, which walks through the creation of an entire project end-to-end.</p>
-<h2 id="goal-of-salsa"><a class="header" href="#goal-of-salsa">Goal of Salsa</a></h2>
-<p>The goal of Salsa is to support efficient <strong>incremental recomputation</strong>.
-Salsa is used in rust-analyzer, for example, to help it recompile your program quickly as you type.</p>
-<p>The basic idea of a Salsa program is like this:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let mut input = ...;
+<p>本面为一个 Salsa 程序片段的简要概述。要了解更详细的内容，请查看<a href="./tutorial.html">教程</a>，该教程从头到尾介绍了整个项目的创建过程。</p>
+<h2 id="salsa-的目标"><a class="header" href="#salsa-的目标">Salsa 的目标</a></h2>
+<p>Salsa 的目标是支持高效的 <strong>增量重新</strong> (incremental recomputation) 计算。</p>
+<p>例如， Salsa 用于 <a href="https://github.com/rust-lang/rust-analyzer">rust-analyzer</a> ，以帮助它在你输入东西时快速重新编译你的程序。</p>
+<p>Salsa 项目的基本理念是这样的：</p>
+<pre><code class="language-rust ignore">let mut input = ...;
 loop {
     let output = your_program(&amp;input);
     modify(&amp;mut input);
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>You start out with an input that has some value.
-You invoke your program to get back a result.
-Some time later, you modify the input and invoke your program again.
-<strong>Our goal is to make this second call faster by re-using some of the results from the first call.</strong></p>
-<p>In reality, of course, you can have many inputs and &quot;your program&quot; may be many different methods and functions defined on those inputs.
-But this picture still conveys a few important concepts:</p>
+</code></pre>
+<p>从输入某个值开始：你可以调用程序来返回结果，一段时间后，你修改输入并再次调用你的程序。</p>
+<p>我们的目标是 <strong>通过重用第一次调用的一些结果来加快第二次调用的速度</strong>。</p>
+<p>当然，在现实中，你可以有许多输入，“你的程序”可能是在这些输入上定义的许多不同的方法和函数。</p>
+<p>但这段代码仍然传达了几个重要的概念：</p>
 <ul>
-<li>Salsa separates out the &quot;incremental computation&quot; (the function <code>your_program</code>) from some outer loop that is defining the inputs.</li>
-<li>Salsa gives you the tools to define <code>your_program</code>.</li>
-<li>Salsa assumes that <code>your_program</code> is a purely deterministic function of its inputs, or else this whole setup makes no sense.</li>
-<li>The mutation of inputs always happens outside of <code>your_program</code>, as part of this master loop.</li>
+<li>Salsa 从定义了输入的某个外部循环中分离出“增量计算”（即函数 <code>your_program</code>)</li>
+<li>Salsa 为你提供了定义 <code>your_program</code> 的工具</li>
+<li>Salsa 假定 <code>your_program</code> 是其输入的一个完全的确定性函数 （deterministic
+，即每次给定相同的输入，输入的结果必须完全确定），否则整个设置没有意义</li>
+<li>作为这个主循环的一部分，输入的变化总是发生在 <code>your_program</code> 之外</li>
 </ul>
-<h2 id="database"><a class="header" href="#database">Database</a></h2>
-<p>Each time you run your program, Salsa remembers the values of each computation in a <strong>database</strong>.
-When the inputs change, it consults this database to look for values that can be reused.
-The database is also used to implement interning (making a canonical version of a value that can be copied around and cheaply compared for equality) and other convenient Salsa features.</p>
-<h2 id="inputs"><a class="header" href="#inputs">Inputs</a></h2>
-<p>Every Salsa program begins with an <strong>input</strong>.
-Inputs are special structs that define the starting point of your program.
-Everything else in your program is ultimately a deterministic function of these inputs.</p>
-<p>For example, in a compiler, there might be an input defining the contents of a file on disk:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::input]
+<h2 id="数据库"><a class="header" href="#数据库">数据库</a></h2>
+<p>每次运行程序时，Salsa 都会记住 <strong>数据库</strong> 中每次计算的值。当更改输入时，它会查询该数据库来查找可以重用的值。</p>
+<p>该数据库还用于实现驻留（interning，指制作一个值的规范版本，然后可以复制该值、进行廉价的相等比较）和其他方便的 Salsa 特性。</p>
+<h2 id="input"><a class="header" href="#input"><code>#[input]</code></a></h2>
+<p>每个 Salsa 程序都从一个输入 (input) 开始。</p>
+<p>输入是定义程序起点的特殊结构。程序中的其他一切最终都是这些输入的确定性函数。</p>
+<p>例如，在编译器中，可能有一个输入定义了磁盘上文件的内容：</p>
+<pre><code class="language-rust ignore">#[salsa::input]
 pub struct ProgramFile {
     pub path: PathBuf,
     pub contents: String,
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>You create an input by using the <code>new</code> method.
-Because the values of input fields are stored in the database, you also give an <code>&amp;mut</code>-reference to the database:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let file: ProgramFile = ProgramFile::new(
+</code></pre>
+<p>你可以使用 <code>new</code> 方法创建一个输入。因为输入字段的值存储在数据库中，所以你也给了数据库一个 <code>&amp;mut</code> 引用：</p>
+<pre><code class="language-rust ignore">let file: ProgramFile = ProgramFile::new(
     &amp;mut db,
     PathBuf::from(&quot;some_path.txt&quot;),
     String::from(&quot;fn foo() { }&quot;),
 );
-<span class="boring">}
-</span></code></pre></pre>
-<h3 id="salsa-structs-are-just-integers"><a class="header" href="#salsa-structs-are-just-integers">Salsa structs are just integers</a></h3>
-<p>The <code>ProgramFile</code> struct generated by the <code>salsa::input</code> macro doesn't actually store any data. It's just a newtyped integer id:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Generated by the `#[salsa::input]` macro:
+</code></pre>
+<h3 id="salsa-结构体只是一个整数"><a class="header" href="#salsa-结构体只是一个整数">Salsa 结构体只是一个整数</a></h3>
+<p>由 <code>salsa::input</code> 宏生成的 <code>ProgramFile</code> 结构实际上并不存储任何数据。它只是一个新类型
+（newtype，一种 Rust 编程模式）的整数 id：</p>
+<pre><code class="language-rust ignore">// Generated by the `#[salsa::input]` macro:
 #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct ProgramFile(salsa::Id);
-<span class="boring">}
-</span></code></pre></pre>
-<p>This means that, when you have a <code>ProgramFile</code>, you can easily copy it around and put it wherever you like.
-To actually read any of its fields, however, you will need to use the database and a getter method.</p>
-<h3 id="reading-fields-and-return_ref"><a class="header" href="#reading-fields-and-return_ref">Reading fields and <code>return_ref</code></a></h3>
-<p>You can access the value of an input's fields by using the getter method.
-As this is only reading the field, it just needs a <code>&amp;</code>-reference to the database:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let contents: String = file.contents(&amp;db);
-<span class="boring">}
-</span></code></pre></pre>
-<p>Invoking the accessor clones the value from the database.
-Sometimes this is not what you want, so you can annotate fields with <code>#[return_ref]</code> to indicate that they should return a reference into the database instead:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::input]
+</code></pre>
+<p>这意味着，当你有一个 <code>ProgramFile </code>时，你可以很容易地复制它，并把它放在你喜欢的任何地方。</p>
+<p>然而，要实际读取它的任何字段，你将需要使用数据库和一个 getter 方法。</p>
+<h3 id="读取字段和-return_ref"><a class="header" href="#读取字段和-return_ref">读取字段和 <code>return_ref</code></a></h3>
+<p>你可以使用 getter 方法<sup class="footnote-reference"><a href="#getter">1</a></sup>访问输入字段的值。由于这只是读字段，所以只需要一个对数据库的 <code>&amp;</code> 引用：</p>
+<pre><code class="language-rust ignore">let contents: String = file.contents(&amp;db);
+</code></pre>
+<div class="footnote-definition" id="getter"><sup class="footnote-definition-label">1</sup>
+<p>译者注：getter 名称就是 <code>字段名</code>。</p>
+</div>
+<p>调用访问器将从数据库中克隆值。有时这并不是你想要的，所以你可以给字段标注 <code>#[return_ref]</code>
+属性，以表明它们应该从数据库中返回引用：</p>
+<pre><code class="language-rust ignore">#[salsa::input]
 pub struct ProgramFile {
     pub path: PathBuf,
     #[return_ref]
     pub contents: String,
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>Now <code>file.contents(&amp;db)</code> will return an <code>&amp;String</code>.</p>
-<p>You can also use the <code>data</code> method to access the entire struct:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>file.data(&amp;db)
-<span class="boring">}
-</span></code></pre></pre>
-<h3 id="writing-input-fields"><a class="header" href="#writing-input-fields">Writing input fields</a></h3>
-<p>Finally, you can also modify the value of an input field by using the setter method.
-Since this is modifying the input, the setter takes an <code>&amp;mut</code>-reference to the database:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>file.set_contents(&amp;mut db, String::from(&quot;fn foo() { /* add a comment */ }&quot;));
-<span class="boring">}
-</span></code></pre></pre>
-<h2 id="tracked-functions"><a class="header" href="#tracked-functions">Tracked functions</a></h2>
-<p>Once you've defined your inputs, the next thing to define are <strong>tracked functions</strong>:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::tracked]
+</code></pre>
+<p>现在 <code>file.content(&amp;db)</code> 将返回 <code>&amp;String</code>。</p>
+<p>你也可以使用 <code>data</code> 方法访问整个结构：</p>
+<pre><code class="language-rust ignore">file.data(&amp;db)
+</code></pre>
+<h3 id="写入字段"><a class="header" href="#写入字段">写入字段</a></h3>
+<p>最后，你还可以使用 setter 方法<sup class="footnote-reference"><a href="#setter">2</a></sup>修改输入字段的值。因为这是在修改输入，所以 setter
+需要对数据库的 <code>&amp;mut</code> 引用：</p>
+<pre><code class="language-rust ignore">file.set_contents(&amp;mut db, String::from(&quot;fn foo() { /* add a comment */ }&quot;));
+</code></pre>
+<div class="footnote-definition" id="setter"><sup class="footnote-definition-label">2</sup>
+<p>译者注：setter 名称就是 <code>set_字段名</code>。</p>
+</div>
+<h2 id="tracked-fn"><a class="header" href="#tracked-fn"><code>#[tracked]</code> fn</a></h2>
+<p>一旦定义了输入，接下来要定义的就是 <strong>跟踪函数</strong> (tracked function)：</p>
+<pre><code class="language-rust ignore">#[salsa::tracked]
 fn parse_file(db: &amp;dyn crate::Db, file: ProgramFile) -&gt; Ast {
     let contents: &amp;str = file.contents(db);
     ...
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>When you call a tracked function, Salsa will track which inputs it accesses (in this example, <code>file.contents(db)</code>).
-It will also memoize the return value (the <code>Ast</code>, in this case).
-If you call a tracked function twice, Salsa checks if the inputs have changed; if not, it can return the memoized value.
-The algorithm Salsa uses to decide when a tracked function needs to be re-executed is called the <a href="./reference/algorithm.html">red-green algorithm</a>, and it's where the name Salsa comes from.</p>
-<p>Tracked functions have to follow a particular structure:</p>
+</code></pre>
+<p>当你调用一个跟踪函数时，salsa 将跟踪它访问了哪些输入（在本例中为 <code>file.content(db)</code>）。</p>
+<p>它还将记录返回值（在本例中为 <code>Ast</code>）。</p>
+<p>如果你调用一个跟踪函数两次， salsa 会检查输入是否已更改；如果没有更改，它可以返回存储的值 (memoized value) 。</p>
+<p>Salsa 使用“<a href="./reference/algorithm.html">红绿算法</a>”决定何时需要重新执行跟踪函数，这就是
+Salsa 这个名字的由来<sup class="footnote-reference"><a href="#salsa-name">3</a></sup>。</p>
+<div class="footnote-definition" id="salsa-name"><sup class="footnote-definition-label">3</sup>
+<p>译者注：“红绿”这种鲜艳的颜色搭配会让人想起 salsa 这种墨西哥辣番茄酱。</p>
+</div>
+<p>跟踪函数必须遵循特定的结构：</p>
 <ul>
-<li>They must take a <code>&amp;</code>-reference to the database as their first argument.
+<li>必须把对数据库的 <code>&amp;</code> 引用作为第一个参数。
 <ul>
-<li>Note that because this is an <code>&amp;</code>-reference, it is not possible to create or modify inputs during a tracked function!</li>
+<li>注意，因为这是一个 <code>&amp;</code> 引用，所以不可能在跟踪函数期间创建或修改输入！</li>
 </ul>
 </li>
-<li>They must take a &quot;Salsa struct&quot; as the second argument -- in our example, this is an input struct, but there are other kinds of Salsa structs we'll describe shortly.</li>
-<li>They <em>can</em> take additional arguments, but it's faster and better if they don't.</li>
+<li>必须将 &quot;salsa struct&quot; 作为第二个参数
+<ul>
+<li>在上述示例中，这是一个输入结构，但我们将简短地描述其他类型的 salsa 结构</li>
 </ul>
-<p>Tracked functions can return any clone-able type. A clone is required since, when the value is cached, the result will be cloned out of the database. Tracked functions can also be annotated with <code>#[return_ref]</code> if you would prefer to return a reference into the database instead (if <code>parse_file</code> were so annotated, then callers would actually get back an <code>&amp;Ast</code>, for example).</p>
-<h2 id="tracked-structs"><a class="header" href="#tracked-structs">Tracked structs</a></h2>
-<p><strong>Tracked structs</strong> are intermediate structs created during your computation.
-Like inputs, their fields are stored inside the database, and the struct itself just wraps an id.
-Unlike inputs, they can only be created inside a tracked function, and their fields can never change once they are created.
-Getter methods are provided to read the fields, but there are no setter methods<sup class="footnote-reference"><a href="#specify">1</a></sup>. Example:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::tracked]
+</li>
+<li>可以接受其他参数，但如果不接受，速度会更快，而且更好。</li>
+</ul>
+<p>跟踪函数可以返回任何可克隆 (clone-able) 的类型。需要克隆，因为在缓存值时，会从数据库中克隆出结果。</p>
+<p>如果你希望从数据库返回引用，则跟踪函数也可以使用 <code>#[return_ref]</code> 进行标注。例如，如果 <code>parse_file</code>
+函数被这样注释，那么调用者实际上会得到 <code>&amp;Ast</code>。</p>
+<h2 id="tracked-struct"><a class="header" href="#tracked-struct"><code>#[tracked]</code> struct</a></h2>
+<p><strong>跟踪结构体</strong> (tracked struct) 是在计算期间创建的中间结构。</p>
+<p>与输入类似，它们的字段存储在数据库中，结构本身只包装一个 id。</p>
+<p>与输入不同的是，它们只能在跟踪函数中创建，并且它们的字段的值一旦创建就永远不能更改。</p>
+<p>所以只对 tracked struct 提供读取字段的 getter 方法，但没有 setter 方法。示例：</p>
+<pre><code class="language-rust ignore">#[salsa::tracked]
 struct Ast {
     #[return_ref]
     top_level_items: Vec&lt;Item&gt;,
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>Just as with an input, new values are created by invoking <code>Ast::new</code>.
-Unlike with an input, the <code>new</code> for a tracked struct only requires a <code>&amp;</code>-reference to the database:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::tracked]
+</code></pre>
+<p>就像输入一样，通过调用 <code>Ast::new</code> 来创建新值。</p>
+<p>与输入不同的是，跟踪结构体的 <code>new</code>只需要一个对数据库的 <code>&amp;</code> 引用：</p>
+<pre><code class="language-rust ignore">#[salsa::tracked]
 fn parse_file(db: &amp;dyn crate::Db, file: ProgramFile) -&gt; Ast {
     let contents: &amp;str = file.contents(db);
     let parser = Parser::new(contents);
@@ -316,53 +300,39 @@ fn parse_file(db: &amp;dyn crate::Db, file: ProgramFile) -&gt; Ast {
     }
     Ast::new(db, top_level_items) // &lt;-- create an Ast!
 }
-<span class="boring">}
-</span></code></pre></pre>
-<h3 id="id-fields"><a class="header" href="#id-fields"><code>#[id]</code> fields</a></h3>
-<p>When a tracked function is re-executed because its inputs have changed, the tracked structs it creates in the new execution are matched against those from the old execution, and the values of their fields are compared.
-If the field values have not changed, then other tracked functions that only read those fields will not be re-executed.</p>
-<p>Normally, tracked structs are matched up by the order in which they are created.
-For example, the first <code>Ast</code> that is created by <code>parse_file</code> in the old execution will be matched against the first <code>Ast</code> created by <code>parse_file</code> in the new execution.
-In our example, <code>parse_file</code> only ever creates a single <code>Ast</code>, so this works great.
-Sometimes, however, it doesn't work so well.
-For example, imagine that we had a tracked struct for items in the file:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::tracked]
+</code></pre>
+<h3 id="id-字段"><a class="header" href="#id-字段"><code>#[id]</code> 字段</a></h3>
+<p>当跟踪函数因为其输入已更改而被重新执行时，函数新执行时创建的跟踪结构体对旧执行中创建的跟踪结构进行匹配，并比较它们的字段的值。</p>
+<p>如果字段值没有更改，则不会重新执行仅读取这些字段的其他跟踪函数。</p>
+<p>通常，跟踪结构体按照它们的创建顺序进行匹配。例如， <code>parse_file</code> 在旧执行中创建的第一个 <code>Ast</code>
+会与 <code>parse_file</code> 在新执行中创建的第一个 <code>Ast</code> 进行匹配。</p>
+<p>在上述示例中， <code>parse_file</code> 实际只创建了一个 <code>Ast</code>，所以代码运行得很好。</p>
+<p>然而，有时它的效果并不是很好。例如，假设我们有一个用于文件中条目的被跟踪结构体：</p>
+<pre><code class="language-rust ignore">#[salsa::tracked]
 struct Item {
-    name: Word, // we'll define Word in a second!
+    name: Word, // 稍后会定义 Word
     ...
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>Maybe our parser first creates an <code>Item</code> with the name <code>foo</code> and then later a second <code>Item</code> with the name <code>bar</code>.
-Then the user changes the input to reorder the functions.
-Although we are still creating the same number of items, we are now creating them in the reverse order, so the naive algorithm will match up the <em>old</em> <code>foo</code> struct with the new <code>bar</code> struct.
-This will look to Salsa as though the <code>foo</code> function was renamed to <code>bar</code> and the <code>bar</code> function was renamed to <code>foo</code>.
-We'll still get the right result, but we might do more recomputation than we needed to do if we understood that they were just reordered.</p>
-<p>To address this, you can tag fields in a tracked struct as <code>#[id]</code>. These fields are then used to &quot;match up&quot; struct instances across executions:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::tracked]
+</code></pre>
+<p>解析器首先创建名为 <code>foo</code> 的函数 <code>Item</code>，然后再创建名为 <code>bar</code> 的函数 <code>Item</code>。然后，使用者改变函数的排序，从而修改了输入。</p>
+<p>尽管我们仍在创建相同数量的条目，但现在要以相反的顺序创建它们，因此朴素算法将匹配旧的 <code>foo</code> 结构和新的 <code>bar</code> 结构。</p>
+<p>在 salsa 看来，好像 <code>foo</code> 函数被重命名为 <code>bar</code>，而 <code>bar</code> 函数被重命名为 <code>foo</code>。</p>
+<p>我们虽然会得到正确的结果，但如果要明白它们只是被重新排序的话，我们可能需要做的更多的重新计算。</p>
+<p>为了解决这个问题，可以将跟踪结构体中的字段标记为 <code>#[id]</code>。然后，这些字段在执行时“匹配”结构体实例：</p>
+<pre><code class="language-rust ignore">#[salsa::tracked]
 struct Item {
     #[id]
-    name: Word, // we'll define Word in a second!
+    name: Word, // 稍后会定义 Word
     ...
 }
-<span class="boring">}
-</span></code></pre></pre>
-<h3 id="specify-the-result-of-tracked-functions-for-particular-structs"><a class="header" href="#specify-the-result-of-tracked-functions-for-particular-structs">Specify the result of tracked functions for particular structs</a></h3>
-<p>Sometimes it is useful to define a tracked function but specify its value for some particular struct specially.
-For example, maybe the default way to compute the representation for a function is to read the AST, but you also have some built-in functions in your language and you want to hard-code their results.
-This can also be used to simulate a field that is initialized after the tracked struct is created.</p>
-<p>To support this use case, you can use the <code>specify</code> method associated with tracked functions.
-To enable this method, you need to add the <code>specify</code> flag to the function to alert users that its value may sometimes be specified externally.</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::tracked(specify)] // &lt;-- specify flag required
+</code></pre>
+<h3 id="trackedspecify-fn"><a class="header" href="#trackedspecify-fn"><code>#[tracked(specify)]</code> fn</a></h3>
+<p>有时，在定义一个跟踪函数的基础上，专门为某个特定的结构体指定它的值是很有用的。</p>
+<p>例如，计算函数形式的默认方法可能是读取 AST，但你的语言中也有一些内置函数，并且你希望对其结果进行硬编码。</p>
+<p>这也可用于模拟在创建跟踪结构体之后初始化字段。</p>
+<p>为了支持这个用例，可以使用跟踪函联的 <code>specify</code> 关联方法。要启用此方法，需要在函数属性中添加
+<code>speciy</code> 标志，以提醒用户其值有时可能是外部指定的。</p>
+<pre><code class="language-rust ignore">#[salsa::tracked(specify)] // &lt;-- specify flag required
 fn representation(db: &amp;dyn crate::Db, item: Item) -&gt; Representation {
     // read the user's input AST by default
     let ast = ast(db, item);
@@ -375,72 +345,49 @@ fn create_builtin_item(db: &amp;dyn crate::Db) -&gt; Item {
     representation::specify(db, i, r); // &lt;-- use the method!
     i
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>Specifying is only possible for tracked functions that take a single tracked struct as an argument (besides the database).</p>
-<h2 id="interned-structs"><a class="header" href="#interned-structs">Interned structs</a></h2>
-<p>The final kind of Salsa struct are <strong>interned structs</strong>.
-Interned structs are useful for quick equality comparison.
-They are commonly used to represent strings or other primitive values.</p>
-<p>Most compilers, for example, will define a type to represent a user identifier:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::interned]
+</code></pre>
+<p>只有将（除了第一个参数的数据库之外的）单个跟踪结构体作为参数的跟踪函数才可以这样指定。</p>
+<h2 id="interned-struct"><a class="header" href="#interned-struct"><code>#[interned]</code> struct</a></h2>
+<p><strong>驻留结构体</strong> (interned struct) 对于快速相等比较很有用。它们通常用于表示字符串或其他 primitive 的值。</p>
+<p>例如，大多数编译器都会定义一个类型来表示用户标识符：</p>
+<pre><code class="language-rust ignore">#[salsa::interned]
 struct Word {
     #[return_ref]
     pub text: String,
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>As with input and tracked structs, the <code>Word</code> struct itself is just a newtyped integer, and the actual data is stored in the database.</p>
-<p>You can create a new interned struct using <code>new</code>, just like with input and tracked structs:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let w1 = Word::new(db, &quot;foo&quot;.to_string());
+</code></pre>
+<p>与 <code>#[input]</code> 和 <code>#[tracked]</code> 所标注的结构体一样，<code>Word</code> 本身只是一个新类型的整数，实际数据存储在数据库中。</p>
+<p>你可以使用 <code>new</code> 函数创建新的内部结构，就像使用输入和跟踪的结构体一样：</p>
+<pre><code class="language-rust ignore">let w1 = Word::new(db, &quot;foo&quot;.to_string());
 let w2 = Word::new(db, &quot;bar&quot;.to_string());
 let w3 = Word::new(db, &quot;foo&quot;.to_string());
-<span class="boring">}
-</span></code></pre></pre>
-<p>When you create two interned structs with the same field values, you are guaranteed to get back the same integer id. So here, we know that <code>assert_eq!(w1, w3)</code> is true and <code>assert_ne!(w1, w2)</code>.</p>
-<p>You can access the fields of an interned struct using a getter, like <code>word.text(db)</code>. These getters respect the <code>#[return_ref]</code> annotation. Like tracked structs, the fields of interned structs are immutable.</p>
-<h2 id="accumulators"><a class="header" href="#accumulators">Accumulators</a></h2>
-<p>The final Salsa concept are <strong>accumulators</strong>. Accumulators are a way to report errors or other &quot;side channel&quot; information that is separate from the main return value of your function.</p>
-<p>To create an accumulator, you declare a type as an <em>accumulator</em>:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::accumulator]
+</code></pre>
+<p>当使用相同的字段值创建两个驻留结构体时，你肯定会得到相同的整型 id。因此，我们知道这里的
+<code>assert_eq!(w1, w3)</code> 为 <code>true</code>，并且 <code>assert_ne!(w1, w2)</code>。</p>
+<p>你可以使用像 <code>word.text(db)</code> 这样的 getter 来访问驻留结构体的字段。这些 getter 会考虑到 <code>#[return_ref]</code> 属性。</p>
+<p>像跟踪结构体一样，驻留结构体的字段是不可变的。</p>
+<h2 id="accumulator"><a class="header" href="#accumulator"><code>#[accumulator]</code></a></h2>
+<p>最后一个 salsa 概念是 <strong>累加器</strong> (accumulator)。</p>
+<p>累加器是一种报告错误或其他“侧信道” (side channel) 信息的方法，这些信息独立于函数的主返回值。</p>
+<p>要创建累加器，请赋予类型该属性：</p>
+<pre><code class="language-rust ignore">#[salsa::accumulator]
 pub struct Diagnostics(String);
-<span class="boring">}
-</span></code></pre></pre>
-<p>It must be a newtype of something, like <code>String</code>. Now, during a tracked function's execution, you can push those values:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>Diagnostics::push(db, &quot;some_string&quot;.to_string())
-<span class="boring">}
-</span></code></pre></pre>
-<p>Then later, from outside the execution, you can ask for the set of diagnostics that were accumulated by some particular tracked function. For example, imagine that we have a type-checker and, during type-checking, it reports some diagnostics:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::tracked]
+</code></pre>
+<p>它一定是一种某个类型的新类型，比如包装了 <code>String</code> 的 newtype。现在，在跟踪函数的执行期间，你可以推送这些值：</p>
+<pre><code class="language-rust ignore">Diagnostics::push(db, &quot;some_string&quot;.to_string())
+</code></pre>
+<p>然后，在执行之外，你可以请求某个特定跟踪函数累积的诊断集。</p>
+<p>例如，假设一个类型检查程序，在类型检查期间，它会报告一些诊断：</p>
+<pre><code class="language-rust ignore">#[salsa::tracked]
 fn type_check(db: &amp;dyn Db, item: Item) {
     // ...
     Diagnostics::push(db, &quot;some error message&quot;.to_string())
     // ...
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>we can then later invoke the associated <code>accumulated</code> function to get all the <code>String</code> values that were pushed:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>let v: Vec&lt;String&gt; = type_check::accumulated::&lt;Diagnostics&gt;(db);
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
+<p>然后，调用关联的 <code>accumulated</code> 函数来获取推送过的所有 <code>String</code> 的值：</p>
+<pre><code class="language-rust ignore">let v: Vec&lt;String&gt; = type_check::accumulated::&lt;Diagnostics&gt;(db);
+</code></pre>
 
                     </main>
 
@@ -490,6 +437,7 @@ fn type_check(db: &amp;dyn Db, item: Item) {
         <!-- Custom JS scripts -->
                 <script type="text/javascript" src="mermaid.min.js"></script>
                 <script type="text/javascript" src="mermaid-init.js"></script>
+                <script type="text/javascript" src="theme/pagetoc.js"></script>
         
         
     </body>
