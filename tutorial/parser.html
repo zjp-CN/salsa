@@ -159,7 +159,8 @@
                         <!-- Page table of contents -->
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
 
-                        <h1 id="定义解析器存储函数的值和输入"><a class="header" href="#定义解析器存储函数的值和输入">定义解析器：存储函数的值和输入</a></h1>
+                        <!-- master#1363d78 --->
+<h1 id="定义解析器存储函数的值和输入"><a class="header" href="#定义解析器存储函数的值和输入">定义解析器：存储函数的值和输入</a></h1>
 <p><code>calc</code> 编译器的下一步是定义解析器 (parser) 。</p>
 <p>解析器的作用是接收 <code>ProgramSource</code> 输入，从 <code>text</code> 字段读取字符串，并创建我们在 <a href="./ir.html"><code>ir</code> 模块</a>中定义的 <code>Statement</code>、<code>Function</code> 和 <code>Expression</code> 结构。</p>
 <p>为了最大限度地减少依赖，我们将编写递归下降解析器 (<a href="https://en.wikipedia.org/wiki/Recursive_descent_parser">recursive descent parser</a>)。</p>

@@ -159,9 +159,11 @@
                         <!-- Page table of contents -->
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
 
-                        <h1 id="定义解析器报告错误"><a class="header" href="#定义解析器报告错误">定义解析器：报告错误</a></h1>
+                        <!-- master#1363d78 --->
+<h1 id="定义解析器报告错误"><a class="header" href="#定义解析器报告错误">定义解析器：报告错误</a></h1>
 <p>解析器中的一个有趣的例子是如何处理解析错误。</p>
-<p>因为 Salsa 函数是有记忆的，且可能不会执行，所以它们不应该有副作用，所以我们不想只调用 <code>eprintln!</code> —— 如果这样做，则只会在第一次调用函数时报告错误。</p>
+<p>因为 Salsa 函数是有记忆的，且可能不会执行，所以它们不应该有副作用，所以我们不想只调用 <code>eprintln!</code> ——
+如果这样做，则只会在第一次调用函数时报告错误，而仅返回被记住的值的后续调用中，<code>eprintln!</code> 不会报告错误（这不是我们要的）。</p>
 <p>Salsa 定义了一种称为 <strong>累加器</strong> (accumulator) 的管理机制。</p>
 <p>在我们的例子中，在 <code>ir</code> 模块中定义了一个名为 <code>Diagnotics</code> 的累加器结构体：</p>
 <pre><pre class="playground"><code class="language-rust">
@@ -178,14 +180,10 @@ pub struct Diagnostic {
 }
 <span class="boring">}
 </span></code></pre></pre>
-<p>Accumulator structs are always newtype structs with a single field, in this case of type <code>Diagnostic</code>.
-Memoized functions can <em>push</em> <code>Diagnostic</code> values onto the accumulator.
-Later, you can invoke a method to find all the values that were pushed by the memoized functions
-or any function that it called
-(e.g., we could get the set of <code>Diagnostic</code> values produced by the <code>parse_statements</code> function).</p>
-<p>累加器结构体始终是具有单个字段的 newtype 结构体，在本例中为<code>诊断‘类型。记忆函数可以将</code>诊断‘值推送到累加器上。稍后，你可以调用一个方法来查找由带记忆的函数或它调用的任何函数推送的所有值(例如，我们可以获得由<code>parse_statements</code>函数生成的一组<code>诊断</code>值)。</p>
-<p>The <code>Parser::report_error</code> method contains an example of pushing a diagnostic:</p>
-<p><code>Parser::report_error</code>方法包含一个推送诊断的示例：</p>
+<p>累加器结构体始终是具有单个字段的 newtype 结构体，在本例中为 <code>Diagnotics</code> 类型。</p>
+<p>记忆函数 (memoized functions) 可以将 <code>Diagnostic</code> 的值推送到累加器上。</p>
+<p>稍后，你可以调用一个方法来查找由记忆函数或它调用的任何函数推送的所有值（例如，可以获得由 <code>parse_statements</code> 函数生成的一组 <code>Diagnostic</code> 的值）。</p>
+<p><code>Parser::report_error</code> 方法有一个推送诊断的示例：</p>
 <pre><pre class="playground"><code class="language-rust">
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -206,9 +204,7 @@ or any function that it called
     }
 <span class="boring">}
 </span></code></pre></pre>
-<p>To get the set of diagnostics produced by <code>parse_errors</code>, or any other memoized function,
-we invoke the associated <code>accumulated</code> function:</p>
-<p>要获取由<code>parse_errors</code>或任何其他记忆函数生成的诊断集，我们调用关联的<code>accumulated</code>函数：</p>
+<p>调用关联函数 <code>accumulated</code> 来获得由 <code>parse_errors</code> 或任何其他记忆函数生成的诊断集，：</p>
 <pre><pre class="playground"><code class="language-rust">
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -219,8 +215,7 @@ we invoke the associated <code>accumulated</code> function:</p>
                       //     the diagnostics type.
 <span class="boring">}
 </span></code></pre></pre>
-<p><code>accumulated</code> takes the database <code>db</code> as argument and returns a <code>Vec</code>.</p>
-<p><code>accumulated</code>以数据库<code>db</code>为参数，返回<code>Vec</code>。</p>
+<p><code>accumulated</code> 以数据库 <code>db</code> 为参数，并返回 <code>Vec</code>。</p>
 
                     </main>
 
