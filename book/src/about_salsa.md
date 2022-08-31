@@ -1,3 +1,5 @@
+<!-- master#1363d78 --->
+
 # 什么是 salsa
 
 <img src="https://raw.githubusercontent.com/salsa-rs/logo/main/FerrisSalsa4-01.svg" alt="" width="300"/>
