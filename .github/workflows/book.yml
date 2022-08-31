@@ -3,7 +3,7 @@ name: Book
 on:
   push:
     branches:
-    - Chinese
+    - Chinese-new
   pull_request:
     paths:
     - 'book/**'
