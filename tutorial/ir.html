@@ -185,7 +185,7 @@
 </span>#[salsa::input]
 pub struct SourceProgram {
     #[return_ref]
-    text: String,
+    pub text: String,
 }
 <span class="boring">}
 </span></code></pre></pre>
@@ -224,7 +224,7 @@ pub struct SourceProgram(salsa::Id);
 </span>#[salsa::tracked]
 pub struct Program {
     #[return_ref]
-    statements: Vec&lt;Statement&gt;,
+    pub statements: Vec&lt;Statement&gt;,
 }
 <span class="boring">}
 </span></code></pre></pre>
@@ -248,15 +248,15 @@ pub struct Program {
 </span>#[salsa::tracked]
 pub struct Function {
     #[id]
-    name: FunctionId,
+    pub name: FunctionId,
 
     name_span: Span,
 
     #[return_ref]
-    args: Vec&lt;VariableId&gt;,
+    pub args: Vec&lt;VariableId&gt;,
 
     #[return_ref]
-    body: Expression,
+    pub body: Expression,
 }
 <span class="boring">}
 </span></code></pre></pre>
