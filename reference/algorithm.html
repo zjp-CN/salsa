@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="sidebar-visible no-js ayu">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Algorithm - Salsa</title>
+        <title>算法 - Salsa（中文介绍）</title>
                 
 
         <!-- Custom HTML head -->
@@ -19,7 +19,6 @@
                 <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
-                <link rel="stylesheet" href="../css/print.css" media="print">
         
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
@@ -32,13 +31,14 @@
 
         <!-- Custom theme stylesheets -->
                 <link rel="stylesheet" href="../mermaid.css">
+                <link rel="stylesheet" href="../theme/pagetoc.css">
         
             </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -64,7 +64,7 @@
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
-            html.classList.remove('light')
+            html.classList.remove('ayu')
             html.classList.add(theme);
             html.classList.add('js');
         </script>
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../about_salsa.html"><strong aria-hidden="true">1.</strong> About salsa</a></li><li class="chapter-item expanded affix "><li class="part-title">How to use Salsa</li><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">2.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../tutorial.html"><strong aria-hidden="true">3.</strong> Tutorial: calc language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tutorial/structure.html"><strong aria-hidden="true">3.1.</strong> Basic structure</a></li><li class="chapter-item expanded "><a href="../tutorial/jar.html"><strong aria-hidden="true">3.2.</strong> Jars and databases</a></li><li class="chapter-item expanded "><a href="../tutorial/db.html"><strong aria-hidden="true">3.3.</strong> Defining the database struct</a></li><li class="chapter-item expanded "><a href="../tutorial/ir.html"><strong aria-hidden="true">3.4.</strong> Defining the IR: the various &quot;salsa structs&quot;</a></li><li class="chapter-item expanded "><a href="../tutorial/parser.html"><strong aria-hidden="true">3.5.</strong> Defining the parser: memoized functions and inputs</a></li><li class="chapter-item expanded "><a href="../tutorial/accumulators.html"><strong aria-hidden="true">3.6.</strong> Defining the parser: reporting errors</a></li><li class="chapter-item expanded "><a href="../tutorial/debug.html"><strong aria-hidden="true">3.7.</strong> Defining the parser: debug impls and testing</a></li><li class="chapter-item expanded "><a href="../tutorial/checker.html"><strong aria-hidden="true">3.8.</strong> Defining the checker</a></li><li class="chapter-item expanded "><a href="../tutorial/interpreter.html"><strong aria-hidden="true">3.9.</strong> Defining the interpreter</a></li></ol></li><li class="chapter-item expanded "><a href="../reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/algorithm.html" class="active"><strong aria-hidden="true">4.1.</strong> Algorithm</a></li></ol></li><li class="chapter-item expanded "><a href="../common_patterns.html"><strong aria-hidden="true">5.</strong> Common patterns</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../common_patterns/selection.html"><strong aria-hidden="true">5.1.</strong> Selection</a></li><li class="chapter-item expanded "><a href="../common_patterns/on_demand_inputs.html"><strong aria-hidden="true">5.2.</strong> On-demand (Lazy) inputs</a></li></ol></li><li class="chapter-item expanded "><a href="../tuning.html"><strong aria-hidden="true">6.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="../cycles.html"><strong aria-hidden="true">7.</strong> Cycle handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cycles/fallback.html"><strong aria-hidden="true">7.1.</strong> Recovering via fallback</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">How Salsa works internally</li><li class="chapter-item expanded "><a href="../how_salsa_works.html"><strong aria-hidden="true">8.</strong> How Salsa works</a></li><li class="chapter-item expanded "><a href="../videos.html"><strong aria-hidden="true">9.</strong> Videos</a></li><li class="chapter-item expanded "><a href="../plumbing.html"><strong aria-hidden="true">10.</strong> Plumbing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/jars_and_ingredients.html"><strong aria-hidden="true">10.1.</strong> Jars and ingredients</a></li><li class="chapter-item expanded "><a href="../plumbing/database_and_runtime.html"><strong aria-hidden="true">10.2.</strong> Databases and runtime</a></li><li class="chapter-item expanded "><a href="../plumbing/query_ops.html"><strong aria-hidden="true">10.3.</strong> Query operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/maybe_changed_after.html"><strong aria-hidden="true">10.3.1.</strong> maybe changed after</a></li><li class="chapter-item expanded "><a href="../plumbing/fetch.html"><strong aria-hidden="true">10.3.2.</strong> Fetch</a></li><li class="chapter-item expanded "><a href="../plumbing/derived_flowchart.html"><strong aria-hidden="true">10.3.3.</strong> Derived queries flowchart</a></li><li class="chapter-item expanded "><a href="../plumbing/cycles.html"><strong aria-hidden="true">10.3.4.</strong> Cycle handling</a></li></ol></li><li class="chapter-item expanded "><a href="../plumbing/terminology.html"><strong aria-hidden="true">10.4.</strong> Terminology</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/terminology/backdate.html"><strong aria-hidden="true">10.4.1.</strong> Backdate</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/changed_at.html"><strong aria-hidden="true">10.4.2.</strong> Changed at</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/dependency.html"><strong aria-hidden="true">10.4.3.</strong> Dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/derived_query.html"><strong aria-hidden="true">10.4.4.</strong> Derived query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/durability.html"><strong aria-hidden="true">10.4.5.</strong> Durability</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/input_query.html"><strong aria-hidden="true">10.4.6.</strong> Input query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/ingredient.html"><strong aria-hidden="true">10.4.7.</strong> Ingredient</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/LRU.html"><strong aria-hidden="true">10.4.8.</strong> LRU</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/memo.html"><strong aria-hidden="true">10.4.9.</strong> Memo</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query.html"><strong aria-hidden="true">10.4.10.</strong> Query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query_function.html"><strong aria-hidden="true">10.4.11.</strong> Query function</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/revision.html"><strong aria-hidden="true">10.4.12.</strong> Revision</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_item.html"><strong aria-hidden="true">10.4.13.</strong> Salsa item</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_struct.html"><strong aria-hidden="true">10.4.14.</strong> Salsa struct</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/untracked.html"><strong aria-hidden="true">10.4.15.</strong> Untracked dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/verified.html"><strong aria-hidden="true">10.4.16.</strong> Verified</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="../meta.html"><strong aria-hidden="true">11.</strong> Meta: about the book itself</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../about_salsa.html"><strong aria-hidden="true">1.</strong> 关于 salsa</a></li><li class="chapter-item expanded affix "><li class="part-title">如何使用 Salsa</li><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">2.</strong> 概述</a></li><li class="chapter-item expanded "><a href="../tutorial.html"><strong aria-hidden="true">3.</strong> 教程： calc 语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tutorial/structure.html"><strong aria-hidden="true">3.1.</strong> 基本结构</a></li><li class="chapter-item expanded "><a href="../tutorial/jar.html"><strong aria-hidden="true">3.2.</strong> Jars 和数据库</a></li><li class="chapter-item expanded "><a href="../tutorial/db.html"><strong aria-hidden="true">3.3.</strong> 定义数据库结构体</a></li><li class="chapter-item expanded "><a href="../tutorial/ir.html"><strong aria-hidden="true">3.4.</strong> 定义 IR：各种 Salsa 结构体</a></li><li class="chapter-item expanded "><a href="../tutorial/parser.html"><strong aria-hidden="true">3.5.</strong> 定义解析器：存储函数的值和输入</a></li><li class="chapter-item expanded "><a href="../tutorial/accumulators.html"><strong aria-hidden="true">3.6.</strong> 定义解析器：报告错误</a></li><li class="chapter-item expanded "><a href="../tutorial/debug.html"><strong aria-hidden="true">3.7.</strong> 定义解析器：debug 与测试</a></li><li class="chapter-item expanded "><a href="../tutorial/checker.html"><strong aria-hidden="true">3.8.</strong> Defining the checker</a></li><li class="chapter-item expanded "><a href="../tutorial/interpreter.html"><strong aria-hidden="true">3.9.</strong> Defining the interpreter</a></li></ol></li><li class="chapter-item expanded "><a href="../reference.html"><strong aria-hidden="true">4.</strong> 参考</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/algorithm.html" class="active"><strong aria-hidden="true">4.1.</strong> 算法</a></li></ol></li><li class="chapter-item expanded "><a href="../common_patterns.html"><strong aria-hidden="true">5.</strong> 模式</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../common_patterns/selection.html"><strong aria-hidden="true">5.1.</strong> 选择</a></li><li class="chapter-item expanded "><a href="../common_patterns/on_demand_inputs.html"><strong aria-hidden="true">5.2.</strong> 按需（惰性）输入</a></li></ol></li><li class="chapter-item expanded "><a href="../tuning.html"><strong aria-hidden="true">6.</strong> 调参</a></li><li class="chapter-item expanded "><a href="../cycles.html"><strong aria-hidden="true">7.</strong> 处理循环</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cycles/fallback.html"><strong aria-hidden="true">7.1.</strong> 通过回退恢复</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Salsa 内部如何工作</li><li class="chapter-item expanded "><a href="../how_salsa_works.html"><strong aria-hidden="true">8.</strong> Salsa 如何工作</a></li><li class="chapter-item expanded "><a href="../videos.html"><strong aria-hidden="true">9.</strong> 视频介绍</a></li><li class="chapter-item expanded "><a href="../plumbing.html"><strong aria-hidden="true">10.</strong> 管道</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/jars_and_ingredients.html"><strong aria-hidden="true">10.1.</strong> Jars 和配料</a></li><li class="chapter-item expanded "><a href="../plumbing/database_and_runtime.html"><strong aria-hidden="true">10.2.</strong> 数据库和运行时</a></li><li class="chapter-item expanded "><a href="../plumbing/query_ops.html"><strong aria-hidden="true">10.3.</strong> 查询操作</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/maybe_changed_after.html"><strong aria-hidden="true">10.3.1.</strong> maybe changed after</a></li><li class="chapter-item expanded "><a href="../plumbing/fetch.html"><strong aria-hidden="true">10.3.2.</strong> Fetch</a></li><li class="chapter-item expanded "><a href="../plumbing/derived_flowchart.html"><strong aria-hidden="true">10.3.3.</strong> Derived queries flowchart</a></li><li class="chapter-item expanded "><a href="../plumbing/cycles.html"><strong aria-hidden="true">10.3.4.</strong> Cycle handling</a></li></ol></li><li class="chapter-item expanded "><a href="../plumbing/terminology.html"><strong aria-hidden="true">10.4.</strong> Terminology</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/terminology/backdate.html"><strong aria-hidden="true">10.4.1.</strong> Backdate</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/changed_at.html"><strong aria-hidden="true">10.4.2.</strong> Changed at</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/dependency.html"><strong aria-hidden="true">10.4.3.</strong> Dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/derived_query.html"><strong aria-hidden="true">10.4.4.</strong> Derived query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/durability.html"><strong aria-hidden="true">10.4.5.</strong> Durability</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/input_query.html"><strong aria-hidden="true">10.4.6.</strong> Input query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/ingredient.html"><strong aria-hidden="true">10.4.7.</strong> Ingredient</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/LRU.html"><strong aria-hidden="true">10.4.8.</strong> LRU</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/memo.html"><strong aria-hidden="true">10.4.9.</strong> Memo</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query.html"><strong aria-hidden="true">10.4.10.</strong> Query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query_function.html"><strong aria-hidden="true">10.4.11.</strong> Query function</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/revision.html"><strong aria-hidden="true">10.4.12.</strong> Revision</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_item.html"><strong aria-hidden="true">10.4.13.</strong> Salsa item</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_struct.html"><strong aria-hidden="true">10.4.14.</strong> Salsa struct</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/untracked.html"><strong aria-hidden="true">10.4.15.</strong> Untracked dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/verified.html"><strong aria-hidden="true">10.4.16.</strong> Verified</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="../meta.html"><strong aria-hidden="true">11.</strong> Meta: about the book itself</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -101,24 +101,27 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
                         </ul>
                                                 <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                                             </div>
 
-                    <h1 class="menu-title">Salsa</h1>
+                    <h1 class="menu-title">Salsa（中文介绍）</h1>
 
                     <div class="right-buttons">
-                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                                                                        <a href="https://github.com/zjp-CN/salsa/tree/Chinese" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                                        
+                                                                        <a href="https://github.com/zjp-CN/salsa/edit/Chinese/book/src/reference/algorithm.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -144,18 +147,33 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="the-red-green-algorithm"><a class="header" href="#the-red-green-algorithm">The &quot;red-green&quot; algorithm</a></h1>
-<p>This page explains the basic Salsa incremental algorithm.
-The algorithm is called the &quot;red-green&quot; algorithm, which is where the name Salsa comes from.</p>
-<h3 id="database-revisions"><a class="header" href="#database-revisions">Database revisions</a></h3>
-<p>The Salsa database always tracks a single <strong>revision</strong>. Each time you set an input, the revision is incremented. So we start in revision <code>R1</code>, but when a <code>set</code> method is called, we will go to <code>R2</code>, then <code>R3</code>, and so on. For each input, we also track the revision in which it was last changed.</p>
-<h3 id="basic-rule-when-inputs-change-re-execute"><a class="header" href="#basic-rule-when-inputs-change-re-execute">Basic rule: when inputs change, re-execute!</a></h3>
-<p>When you invoke a tracked function, in addition to storing the value that was returned, we also track what <em>other</em> tracked functions it depends on, and the revisions when their value last changed. When you invoke the function again, if the database is in a new revision, then we check whether any of the inputs to this function have changed in that new revision. If not, we can just return our cached value. But if the inputs <em>have</em> changed (or may have changed), we will re-execute the function to find the most up-to-date answer.</p>
-<p>Here is a simple example, where the <code>parse_module</code> function invokes the <code>module_text</code> function:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::tracked]
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- master#657b856 --->
+<h1 id="红-绿算法"><a class="header" href="#红-绿算法">“红-绿”算法</a></h1>
+<p>本页面介绍基本的 Salsa 增量算法。这种算法被称为“红-绿”算法，这是 Salsa 这个名字的由来<sup class="footnote-reference"><a href="#salsa-name">1</a></sup>。</p>
+<div class="footnote-definition" id="salsa-name"><sup class="footnote-definition-label">1</sup>
+<p>译者注：墨西哥辣番茄酱 (salsa) 以鲜艳的红绿配色为特色。</p>
+</div>
+<h3 id="数据库的修订版本"><a class="header" href="#数据库的修订版本">数据库的修订版本</a></h3>
+<p>Salsa 数据库始终跟踪一个修订版本 (revision)。每次设置输入时，修订都是增量的。</p>
+<p>所以 Salsa 从修订版本 <code>R1</code> 开始，但当调用 <code>set</code> 方法时，将变为 <code>R2</code>，然后是 <code>R3</code>，依此类推。对于每个输入，Salsa 还跟踪上次更改它的修订版本。</p>
+<h3 id="基本规则输入发生变化时重新执行"><a class="header" href="#基本规则输入发生变化时重新执行">基本规则：输入发生变化时重新执行</a></h3>
+<p>当你调用跟踪函数时，除了存储已经被返回的值之外，Salsa 还跟踪它所依赖的其他跟踪函数，以及它们的值最后一次更改的修订版本。</p>
+<p>当你再次调用该函数时，如果数据库处于新的修订版本中，Salsa 则检查该函数的任何输入是否在该新修订版本中发生了更改。</p>
+<p>如果没有发生更改，Salsa 可以只返回其缓存的值。但如果输入已更改（或可能已更改），Salsa 将重新执行该函数以得到最新的结果。</p>
+<p>下面是一个简单的例子，其中 <code>parse_module</code> 函数调用 <code>module_text</code> 函数：</p>
+<pre><code class="language-rust ignore">#[salsa::tracked]
 fn parse_module(db: &amp;dyn Db, module: Module) -&gt; Ast {
     let module_text: &amp;String = module_text(db, module);
     Ast::parse_text(module_text)
@@ -165,13 +183,9 @@ fn parse_module(db: &amp;dyn Db, module: Module) -&gt; Ast {
 fn module_text(db: &amp;dyn Db, module: Module) -&gt; String {
     panic!(&quot;text for module `{module:?}` not set&quot;)
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>If we invoke <code>parse_module</code> twice, but change the module text in between, then we will have to re-execute <code>parse_module</code>:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>module_text::set(
+</code></pre>
+<p>如果调用了两次 <code>parse_module</code>，但是其间更改了模块的文本，那么 Salsa 将不得不重新执行 <code>parse_module</code>：</p>
+<pre><code class="language-rust ignore">module_text::set(
     db,
     module,
     &quot;fn foo() { }&quot;.to_string(),
@@ -186,41 +200,36 @@ module_text::set(
     &quot;fn foo() { /* add a comment */ }&quot;.to_string(),
 );
 parse_module(db, module); // executes again!
-<span class="boring">}
-</span></code></pre></pre>
-<h3 id="backdating-sometimes-we-can-be-smarter"><a class="header" href="#backdating-sometimes-we-can-be-smarter">Backdating: sometimes we can be smarter</a></h3>
-<p>Often, though, tracked functions don't depend directly on the inputs. Instead, they'll depend on some other tracked function. For example, perhaps we have a <code>type_check</code> function that reads the AST:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>#[salsa::tracked]
+</code></pre>
+<h3 id="追溯有时我们可以更聪明"><a class="header" href="#追溯有时我们可以更聪明">追溯：有时我们可以更聪明</a></h3>
+<p>不过，跟踪函数通常不直接依赖于输入。相反，它们将依赖于其他一些跟踪函数。例如，我们可能有一个读取 AST 的 <code>type_check</code> 函数：</p>
+<pre><code class="language-rust ignore">#[salsa::tracked]
 fn type_check(db: &amp;dyn Db, module: Module) {
     let ast = parse_module(db, module);
     ...
 }
-<span class="boring">}
-</span></code></pre></pre>
-<p>If the module text is changed, we saw that we have to re-execute <code>parse_module</code>, but there are many changes to the source text that still produce the same AST. For example, suppose we simply add a comment? In that case, if <code>type_check</code> is called again, we will:</p>
+</code></pre>
+<p>如果模块中文本被更改，Salsa 必须重新执行 <code>parse_module</code>，但对源文本的许多更改仍然会生成相同的 AST。</p>
+<p>例如，假设我们只添加了一条注释？在这种情况下，如果再次调用 <code>type_check</code>，我们将：</p>
 <ul>
-<li>First re-execute <code>parse_module</code>, since its input changed.</li>
-<li>We will then compare the resulting AST. If it's the same as last time, we can <em>backdate</em> the result, meaning that we say that, even though the inputs changed, the output didn't.</li>
+<li>首先重新执行 <code>parse_module</code>，因为它的输入发生了变化。</li>
+<li>然后比较得到的 AST：如果它与上次相同，我们可以追溯 (backdate) 结果；也就是说，即使输入改变了，输出也没有改变。</li>
 </ul>
-<h2 id="durability-an-optimization"><a class="header" href="#durability-an-optimization">Durability: an optimization</a></h2>
-<p>As an optimization, Salsa includes the concept of <strong>durability</strong>, which is the notion of how often some piece of tracked data changes. </p>
-<p>For example, when compiling a Rust program, you might mark the inputs from crates.io as <em>high durability</em> inputs, since they are unlikely to change. The current workspace could be marked as <em>low durability</em>, since changes to it are happening all the time.</p>
-<p>When you set the value of a tracked function, you can also set it with a given <em>durability</em>:</p>
-<pre><pre class="playground"><code class="language-rust">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>module_text::set_with_durability(
+<h2 id="持久性优化"><a class="header" href="#持久性优化">持久性：优化</a></h2>
+<p>作为一种优化，Salsa 包含了持久性 (durability) 的概念，这是指一些被跟踪的数据更改的频率。</p>
+<p>例如，在编译 Rust 程序时，你可能会把来自 crates.io 
+的输入标记为高持久性输入，因为它们不太可能更改；把当前工作区可以标记为低持久性，因为对其的更改一直在发生。</p>
+<p>当设置跟踪函数值时，你还可以给定持久性：</p>
+<pre><code class="language-rust ignore">module_text::set_with_durability(
     db,
     module,
     &quot;fn foo() { }&quot;.to_string(),
     salsa::Durability::HIGH
 );
-<span class="boring">}
-</span></code></pre></pre>
-<p>For each durability, we track the revision in which <em>some input</em> with that durability changed. If a tracked function depends (transitively) only on high durability inputs, and you change a low durability input, then we can very easily determine that the tracked function result is still valid, avoiding the need to traverse the input edges one by one.</p>
+</code></pre>
+<p>对于每个持久性，Salsa 跟踪与该持久性相关的某些输入所发生更改的修订。</p>
+<p>如果一个跟踪函数只（传递地）依赖高持久性输入，而你更改了一个低持久性输入，那么 Salsa 
+可以非常容易地确定跟踪函数的结果仍然有效，从而避免了逐个遍历输入。</p>
 
                     </main>
 
@@ -270,6 +279,7 @@ fn type_check(db: &amp;dyn Db, module: Module) {
         <!-- Custom JS scripts -->
                 <script type="text/javascript" src="../mermaid.min.js"></script>
                 <script type="text/javascript" src="../mermaid-init.js"></script>
+                <script type="text/javascript" src="../theme/pagetoc.js"></script>
         
         
     </body>
