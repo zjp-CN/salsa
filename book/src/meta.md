@@ -12,7 +12,7 @@
 * 链接到源代码中的模块。
 * 创建命名锚 ([named anchors]) 来直接嵌入源代码。
 
-["named anchors"]: https://rust-lang.github.io/mdBook/format/mdbook.html?highlight=ANCHOR#including-portions-of-a-file
+[named anchors]: https://rust-lang.github.io/mdBook/format/mdbook.html?highlight=ANCHOR#including-portions-of-a-file
 
 **不要做**：
 
