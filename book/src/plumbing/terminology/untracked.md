@@ -1,7 +1,14 @@
+<!-- master#68cb5e9 --->
+
 # Untracked dependency
 
-An *untracked dependency* is an indication that the result of a [derived query] depends on something not visible to the salsa database. Untracked dependencies are created by invoking [`report_untracked_read`](https://docs.rs/salsa/0.16.1/salsa/struct.Runtime.html#method.report_untracked_read) or [`report_synthetic_read`](https://docs.rs/salsa/0.16.1/salsa/struct.Runtime.html#method.report_synthetic_read). When an untracked dependency is present, [derived queries] are always re-executed if the durability check fails (see the description of the [fetch operation] for more details).
+未跟踪的依赖项 (untracked dependency)：指派生查询 ([derived query]) 的结果依赖于 Salsa 数据库不可见的内容。
+* 通过调用 [`report_untracked_read`] 或 [`report_synthetic_read`] 来创建
+* 当存在未跟踪的依赖时，如果持久性检查失败，则始终重新执行派生查询
+* 更多详细信息，见 [fetch] 的操作说明
 
+[`report_untracked_read`]: https://docs.rs/salsa/0.16.1/salsa/struct.Runtime.html#method.report_untracked_read
+[`report_synthetic_read`]: https://docs.rs/salsa/0.16.1/salsa/struct.Runtime.html#method.report_synthetic_read
 [derived query]: ./derived_query.md
 [derived queries]: ./derived_query.md
-[fetch operation]: ../fetch.md#derived-queries
+[fetch]: ../fetch.md#derived-queries

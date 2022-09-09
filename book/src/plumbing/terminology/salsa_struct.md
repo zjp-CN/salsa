@@ -1,9 +1,11 @@
+<!-- master#68cb5e9 --->
+
 # Salsa struct
 
-A salsa struct is a struct decorated with one of the salsa macros:
+Salsa struct 是用以下一种 Salsa 宏装饰的结构体：
 
 * `#[salsa::tracked]`
 * `#[salsa::input]`
 * `#[salsa::interned]`
 
-See the [salsa overview](../../overview.md) for more details.
+更多细节见 [概览](../../overview.md)。

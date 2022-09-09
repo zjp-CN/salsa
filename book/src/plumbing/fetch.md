@@ -1,42 +1,56 @@
-# Fetch
+<!-- master#68cb5e9 --->
+
+# fetch
 
 ```rust,no_run,noplayground
 {{#include ../../../src/plumbing.rs:fetch}}
 ```
 
-The `fetch` operation computes the value of a query. It prefers to reuse memoized values when it can.
+`fetch` 方法计算查询的值。最好在可能的情况下重复使用已记忆的值。
 
-## Input queries
+## 输入查询
 
-Input queries simply load the result from the table.
+输入查询只是从表中加载结果。
 
-## Interned queries
+## Interned 查询
 
-Interned queries map the input into a hashmap to find an existing integer. If none is present, a new value is created.
+Interned 查询将输入映射到 hashmap 中以查找现有的整数。如果不存在，则会创建一个新值。
 
 ## Derived queries
 
-The logic for derived queries is more complex. We summarize the high-level ideas here, but you may find the [flowchart](./derived_flowchart.md) useful to dig deeper. The [terminology](./terminology.md) section may also be useful; in some cases, we link to that section on the first usage of a word.
+## 派生查询
 
-* If an existing [memo] is found, then we check if the memo was [verified] in the current [revision]. If so, we can directly return the memoized value.
-* Otherwise, if the memo contains a memoized value, we must check whether [dependencies] have been modified:
-    * Let R be the revision in which the memo was last verified; we wish to know if any of the dependencies have changed since revision R.
-    * First, we check the [durability]. For each memo, we track the minimum durability of the memo's dependencies. If the memo has durability D, and there have been no changes to an input with durability D since the last time the memo was verified, then we can consider the memo verified without any further work.
-    * If the durability check is not sufficient, then we must check the dependencies individually. For this, we iterate over each dependency D and invoke the [maybe changed after](./maybe_changed_after.md) operation to check whether D has changed since the revision R.
-    * If no dependency was modified:
-        * We can mark the memo as verified and return its memoized value.
-* Assuming dependencies have been modified or the memo does not contain a memoized value:
-    * Then we execute the user's query function.
-    * Next, we compute the revision in which the memoized value last changed:
-        * *Backdate:* If there was a previous memoized value, and the new value is equal to that old value, then we can *backdate* the memo, which means to use the 'changed at' revision from before.
-            * Thanks to backdating, it is possible for a dependency of the query to have changed in some revision R1 but for the *output* of the query to have changed in some revision R2 where R2 predates R1.
-        * Otherwise, we use the current revision.
-    * Construct a memo for the new value and return it.
+派生查询的逻辑更为复杂。这里总结一下高级别的想法，但你可能会发现[流程图][flowchart]有助于深入挖掘。
 
-[durability]: ./terminology/durability.md
-[backdate]: ./terminology/backdate.md
-[dependency]: ./terminology/dependency.md
-[dependencies]: ./terminology/dependency.md
+[术语][terminology]一章也可能很有用；在某些情况下，我们会链接到有关单词首次用法的部分。
+
+* 如果 [memo] 已存在，则检查该备忘录是否在当前修订版本 ([revision]) 中进行了验证 ([verified])。
+  * 如果是，则比较它更改所在 ([changed at]) 修订，并适当地返回 true 或 false。
+* 如果 memo 不存在，则必须检查依赖项 ([dependencies]) 是否已被修改：
+  * 设 R 是上次验证 memo 的修订版本；我们希望知道自修订 R 以来，是否有任何依赖项被更改。
+  * 首先，检查持久性 ([durability])。对于每个 memo，跟踪 memo 依赖项的最小持久性。如果 memo 具有持久性 D，并且自上次验证以来，持久性为 D 的输入没有任何更改，则可以认为 memo 已验证，从而无需任何进一步工作。
+  * 如果持久性检查不够充分，则必须逐个检查依赖项。为此，需迭代每个依赖项 D，并调用 [maybe_changed_after] 操作以检查自修订版本 R 以来 D 是否已更改。
+  * 如果未修改依赖项：将 memo 标记为已验证，并使用其在更改所在的修订以返回 true 或 false。
+  * 如果依赖项已修改：
+    * 执行使用者的查询函数（与 [fetch] 相同)，这可能会回溯 ([backdate]) 结果值。
+* 假设依赖项已经被修改或者 memo 不包含被记忆的值：
+  * 则执行使用者的查询功能
+  * 然后，计算被记忆的值最后被更改的修订版本：
+    * 回溯：如果此前被记忆的值存在，并且新值等于该旧值，则回溯 memo，这意味着使用以前的 `changed_at` 修订
+      * 由于回溯，查询的依赖可能在某个修订 R1 中改变，但是查询的结果在 R2 先于 R1 的某个修订中改变
+    * 否则，使用当前版本
+  * 为新值构造一个 memo 并返回它
+
+[flowchart]: ./derived_flowchart.md
+[terminology]: ./terminology.md
 [memo]: ./terminology/memo.md
-[revision]: ./terminology/revision.md
 [verified]: ./terminology/verified.md
+[revision]: ./terminology/revision.md
+[changed at]: ./terminology/changed_at.md
+[dependencies]: ./terminology/dependency.md
+[durability]: ./terminology/durability.md
+[maybe_changed_after]: ./maybe_changed_after.md
+[changed at]: ./terminology/changed_at.md
+[fetch]: ./fetch.md
+[backdate]: ./terminology/backdate.md
+

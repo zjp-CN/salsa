@@ -1,6 +1,10 @@
+<!-- master#68cb5e9 --->
+
 # Derived query
 
-A *derived query* is a [query] whose value is defined by the result of a user-provided [query function]. That function is executed to get the result of the query. Unlike [input queries], the result of a derived queries can always be recomputed whenever needed simply by re-executing the function.
+派生查询 (derived query) ：指一种这样的查询 ([query])，它的值由使用者所提供的 [query function] 的结果确定。
+
+执行那种查询函数以获得查询结果。与输入查询 ([input queries]) 不同的是，每当需要的时候，只需重新执行函数，派生查询的结果就可以随时重新计算。
 
 [query]: ./query.md
 [query function]: ./query_function.md

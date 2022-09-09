@@ -32,11 +32,11 @@
   - [Jars 和配料](./plumbing/jars_and_ingredients.md)
   - [数据库和运行时](./plumbing/database_and_runtime.md)
   - [查询操作](./plumbing/query_ops.md)
-    - [maybe changed after](./plumbing/maybe_changed_after.md)
-    - [Fetch](./plumbing/fetch.md)
-    - [Derived queries flowchart](./plumbing/derived_flowchart.md)
-    - [Cycle handling](./plumbing/cycles.md)
-  - [Terminology](./plumbing/terminology.md)
+    - [maybe_changed_after](./plumbing/maybe_changed_after.md)
+    - [fetch](./plumbing/fetch.md)
+    - [派生查询流程图](./plumbing/derived_flowchart.md)
+    - [处理循环](./plumbing/cycles.md)
+  - [术语](./plumbing/terminology.md)
     - [Backdate](./plumbing/terminology/backdate.md)
     - [Changed at](./plumbing/terminology/changed_at.md)
     - [Dependency](./plumbing/terminology/dependency.md)
@@ -54,6 +54,6 @@
     - [Untracked dependency](./plumbing/terminology/untracked.md)
     - [Verified](./plumbing/terminology/verified.md)
 
-# Appendices
+# 附录
 
-- [Meta: about the book itself](./meta.md)
+- [关于这本书本身](./meta.md)

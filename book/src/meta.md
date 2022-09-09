@@ -1,17 +1,19 @@
-# Meta: about the book itself
+<!-- master#68cb5e9 --->
 
-## Linking policy
+# 关于这本书本身
 
-We try to avoid links that easily become fragile. 
+## 链接策略
 
-**Do:**
+我们试图避免那些容易变得脆弱的链接。
 
-* Link to `docs.rs` types to document the public API, but modify the link to use `latest` as the version.
-* Link to modules in the source code.
-* Create ["named anchors"] and embed source code directly.
+**做**：
+
+* 链接到 `docs.rs` 类型以记录公共接口，但把链接改成 `latest` 版本。
+* 链接到源代码中的模块。
+* 创建命名锚 ([named anchors]) 来直接嵌入源代码。
 
 ["named anchors"]: https://rust-lang.github.io/mdBook/format/mdbook.html?highlight=ANCHOR#including-portions-of-a-file
 
-**Don't:**
+**不要做**：
 
-* Link to direct lines on github, even within a specific commit, unless you are trying to reference a historical piece of code ("how things were at the time").
+* 直接链接到 Github 上的行，即使是在特定的提交中，除非你试图引用一段历史代码（“事情在当时是怎样的”）。

@@ -1,28 +1,43 @@
-# Cycles
+<!-- master#68cb5e9 --->
 
-## Cross-thread blocking
+# 循环
 
-The interface for blocking across threads now works as follows:
+## 跨线程阻塞
 
-* When one thread `T1` wishes to block on a query `Q` being executed by another thread `T2`, it invokes `Runtime::try_block_on`. This will check for cycles. Assuming no cycle is detected, it will block `T1` until `T2` has completed with `Q`. At that point, `T1` reawakens. However, we don't know the result of executing `Q`, so `T1` now has to "retry". Typically, this will result in successfully reading the cached value.
-* While `T1` is blocking, the runtime moves its query stack (a `Vec`) into the shared dependency graph data structure. When `T1` reawakens, it recovers ownership of its query stack before returning from `try_block_on`.
+现在，用于跨线程阻塞的接口的工作方式如下：
 
-## Cycle detection
+* 当一个线程 `T1` 希望阻塞另一个线程 `T2` 正在执行的查询 `Q` 时，它（`T1` 方）会调用
+  `Runtime::try_block_on`。这将检查循环。假设没有检测到循环，它会阻塞 `T1`，直到 `T2` 以 `Q` 结束。此时，重新唤醒 `T1` 。但是，我们不知道执行
+  `Q` 的结果，所以 `T1` 现在必须重试 （retry）。通常，这最终成功读取缓存值。
+* 当 `T1` 被阻塞时，运行时将其查询栈（一个 `Vec`）移动到共享依赖图数据结构中。当重新唤醒 `T1` 时，它从 `try_block_on`
+  返回之前恢复其查询栈的所有权。
 
-When a thread `T1` attempts to execute a query `Q`, it will try to load the value for `Q` from the memoization tables. If it finds an `InProgress` marker, that indicates that `Q` is currently being computed. This indicates a potential cycle. `T1` will then try to block on the query `Q`:
+## 检测循环
 
-* If `Q` is also being computed by `T1`, then there is a cycle.
-* Otherwise, if `Q` is being computed by some other thread `T2`, we have to check whether `T2` is (transitively) blocked on `T1`. If so, there is a cycle.
+当线程 `T1` 试图执行查询 `Q` 时，它将尝试从记忆表中加载 `Q` 的值。
 
-These two cases are handled internally by the `Runtime::try_block_on` function. Detecting the intra-thread cycle case is easy; to detect cross-thread cycles, the runtime maintains a dependency DAG between threads (identified by `RuntimeId`). Before adding an edge `T1 -> T2` (i.e., `T1` is blocked waiting for `T2`) into the DAG, it checks whether a path exists from `T2` to `T1`. If so, we have a cycle and the edge cannot be added (then the DAG would not longer be acyclic).
+如果发现 `InProgress` 标记，则表示当前正在计算 `Q`。这表明了一个潜在的循环。然后， `T1` 会尝试阻止查询 `Q`：
 
-When a cycle is detected, the current thread `T1` has full access to the query stacks that are participating in the cycle. Consider: naturally, `T1` has access to its own stack. There is also a path `T2 -> ... -> Tn -> T1` of blocked threads. Each of the blocked threads `T2 ..= Tn` will have moved their query stacks into the dependency graph, so those query stacks are available for inspection.
+* 如果 `Q` 也被 `T1` 计算，那么就有一个循环。
+* 否则，如果 `Q` 正在被其他线程 `T2` 计算，则必须检查 `T2` 是否在 `T1` 上（传递地）被阻塞。如果是，则存在一个循环。
 
-Using the available stacks, we can create a list of cycle participants `Q0 ... Qn` and store that into a `Cycle` struct. If none of the participants `Q0 ... Qn` have cycle recovery enabled, we panic with the `Cycle` struct, which will trigger all the queries on this thread to panic.
+这两种情况由 `Runtime::try_block_on` 函数内部处理。检测线程内循环的情况很容易；而为了检测跨线程循环，运行时维护线程之间的依赖 DAG（由 `RuntimeId` 标识)。
 
-## Cycle recovery via fallback
+在将 `T1 -> T2` 边（即阻塞 `T1` 等待 `T2`）添加到 DAG 之前，检查是否存在从 `T2` 到 `T1` 的路径。如果是，则存在一个循环，且边不能被添加（然后
+DAG 将不再是非循环的）。
 
-If any of the cycle participants `Q0 ... Qn` has cycle recovery set, we recover from the cycle. To help explain how this works, we will use this example cycle which contains three threads. Beginning with the current query, the cycle participants are `QA3`, `QB2`, `QB3`, `QC2`, `QC3`, and `QA2`.
+当检测到循环时，当前线程 `T1` 具有对参与该循环的查询栈的完全访问权限。思考一下： `T1` 当然可以访问它自己的栈。
+
+还有一条 `T2 -> ... -> Tn -> T1` 阻塞线程路径。每个被阻塞的线程 `T2 ..= Tn` 将它们的查询栈移动到依赖图中，因此这些查询栈可供检查。
+
+通过使用可用的栈，我们可以创建一列 `Q0 ... Qn` 循环参与者，并将其存储到一个 `Cycle` 结构体中。如果参与者 `Q0 ...Qn` 
+全都没有启用循环恢复，就会因为 `Cycle` 结构体而 panic，从而触发该线程上的所有查询 panic。
+
+## 通过回退实现循环恢复
+
+如果任何一个循环参与者已经设置了循环恢复，那么会从循环中恢复。
+
+为了解释这是如何工作的，我们将使用这个三个线程的示例循环。从当前查询开始，循环参与者为 `QA3`、`QB2`、`QB3`、`QC2`、`QC3`、`QA2`。
 
 ```
         The cyclic
@@ -38,28 +53,41 @@ If any of the cycle participants `Q0 ... Qn` has cycle recovery set, we recover 
 └───────────────────────────────┘
 ```
 
-Recovery works in phases:
+恢复工作分阶段进行：
 
-* **Analyze:** As we enumerate the query participants, we collect their collective inputs (all queries invoked so far by any cycle participant) and the max changed-at and min duration. We then remove the cycle participants themselves from this list of inputs, leaving only the queries external to the cycle.
-* **Mark**: For each query Q that is annotated with `#[salsa::recover]`, we mark it and all of its successors on the same thread by setting its `cycle` flag to the `c: Cycle` we constructed earlier; we also reset its inputs to the collective inputs gathering during analysis. If those queries resume execution later, those marks will trigger them to immediately unwind and use cycle recovery, and the inputs will be used as the inputs to the recovery value.
-    * Note that we mark *all* the successors of Q on the same thread, whether or not they have recovery set. We'll discuss later how this is important in the case where the active thread (A, here) doesn't have any recovery set.
-* **Unblock**: Each blocked thread T that has a recovering query is forcibly reawoken; the outgoing edge from that thread to its successor in the cycle is removed. Its condvar is signalled with a `WaitResult::Cycle(c)`. When the thread reawakens, it will see that and start unwinding with the cycle `c`.
-* **Handle the current thread:** Finally, we have to choose how to have the current thread proceed. If the current thread includes any cycle with recovery information, then we can begin unwinding. Otherwise, the current thread simply continues as if there had been no cycle, and so the cyclic edge is added to the graph and the current thread blocks. This is possible because some other thread had recovery information and therefore has been awoken.
+* 分析：当枚举查询参与者时，收集他们的共同输入（到目前为止由任何循环参与者调用的所有查询）以及最大更改时间和最小持续时间。
+  然后，从该输入列表中删除循环参与者，只留下循环外部的查询。
+* 标记：对于每个用 `#[salsa::recover]` 标注的查询 Q，通过将其 `cycle` 标志设置为先前构造的 `c: Cycle` 
+  来标记它及其在同一线程上的所有之后的查询（后继查询）；并将其输入重置为在分析期间收集的共同输入。
+  如果这些查询稍后继续执行，则这些标记将触发它们立即展开 (unwind) 并使用循环恢复，且其输入将用作恢复值的输入。
+    * 注意，在同一线程上标记了 Q 所有后继查询，无论它们是否设置了恢复。稍后将讨论在活动线程（此处为 A）没有设置任何恢复的情况下这是多么重要。
+* 解除阻塞：强制重新唤醒每个具有恢复查询的阻塞线程 T；移除从该线程到循环中的后续线程所传出的边 (edge)。用一个 `WaitResult::Cycle(c)`
+  向 condvar 发出信号。当重新唤醒线程时，它将看到这一点，并以 `c` 循环开始展开。
+* 处理当前线程：最后，必须选择如何让当前线程继续。如果当前线程包含任何带有恢复信息的循环，则可以开始展开。否则，当前线程就简单地继续，就好像没有循环一样，
+  因此循环边被添加到图中，当前线程阻塞。这是可能的，因为其他线程有恢复信息，因而已被唤醒。
 
-Let's walk through the process with a few examples.
+让我们通过几个例子来演示这个过程。
 
-### Example 1: Recovery on the detecting thread
+### eg1：在检测线程上的恢复
 
-Consider the case where only the query QA2 has recovery set. It and QA3 will be marked with their `cycle` flag set to `c: Cycle`. Threads B and C will not be unblocked, as they do not have any cycle recovery nodes. The current thread (Thread A) will initiate unwinding with the cycle `c` as the value. Unwinding will pass through QA3 and be caught by QA2. QA2 will substitute the recovery value and return normally. QA1 and QC3 will then complete normally and so forth, on up until all queries have completed.
+考虑只有查询 QA2 设置了恢复的情况。QA2 和 QA3 会将其 `Cycle` 标志设置为 `c: Cycle`。线程 B 和 C 不会被解除阻塞，因为它们没有任何循环恢复节点。
 
-### Example 2: Recovery in two queries on the detecting thread
+当前线程（线程 A）将以循环 `c` 为值发起展开 (unwind)。展开将经过 QA3，并被 QA2 捕获。 QA2 将替代恢复值并正常返回。 QA1
+和 QC3 随后将正常完成，依此类推，直到所有查询完成。
 
-Consider the case where both query QA2 and QA3 have recovery set. It proceeds the same Example 1 until the the current initiates unwinding, as described in Example 1. When QA3 receives the cycle, it stores its recovery value and completes normally. QA2 then adds QA3 as an input dependency: at that point, QA2 observes that it too has the cycle mark set, and so it initiates unwinding. The rest of QA2 therefore never executes. This unwinding is caught by QA2's entry point and it stores the recovery value and returns normally. QA1 and QC3 then continue normally, as they have not had their `cycle` flag set.
+### eg2：在检测线程上的两个查询中的恢复
 
-### Example 3: Recovery on another thread
+考虑查询 QA2 和 QA3 都设置了恢复的情况。与示例 1 执行相同过程，直到线程开始展开，如示例 1 所述。
 
-Now consider the case where only the query QB2 has recovery set. It and QB3 will be marked with the cycle `c: Cycle` and thread B will be unblocked; the edge `QB3 -> QC2` will be removed from the dependency graph. Thread A will then add an edge `QA3 -> QB2` and block on thread B. At that point, thread A releases the lock on the dependency graph, and so thread B is re-awoken. It observes the `WaitResult::Cycle` and initiates unwinding. Unwinding proceeds through QB3 and into QB2, which recovers. QB1 is then able to execute normally, as is QA3, and execution proceeds from there.
+当 QA3 接收到循环时，它把其恢复值存储起来并正常完成。然后 QA2 添加 QA3 作为输入依赖项：此时， QA2 也设置循环标记，因此它启动展开。因此，
+QA2 的其余部分永远不会被执行。这种展开被 QA2 的入口点 (entry point) 捕获，它存储恢复值并正常返回。QA1 和 QC3 随后正常继续，因为它们还没有设置其 `cycle` 标志。
 
-### Example 4: Recovery on all queries
+### eg3：在另一个线程上恢复
 
-Now consider the case where all the queries have recovery set. In that case, they are all marked with the cycle, and all the cross-thread edges are removed from the graph. Each thread will independently awaken and initiate unwinding. Each query will recover.
+考虑只有查询 QB2 设置了恢复的情况。它和 QB3 将被标记为循环 `c: Cycle`，线程 B 将被解除阻塞；边 `QB3 -> QC2` 将从依赖图中移除。然后，线程 A
+将添加一条边 `QA3 -> QB2` 并阻塞线程 B。此时，线程 A 释放依赖图上的锁，因此线程 B 被重新唤醒。它观察到 `WaitResult::Cycle`
+并启动展开。展开经过 QB3 进入 QB2，然后恢复。然后， QB1 能够正常执行， QA3 也正常执行，并从那里继续执行。
+
+### eg4：恢复所有查询
+
+考虑所有查询都设置了恢复的情况。此时，它们被标记了循环，并且所有跨线的边都从依赖图中移除。每个线程将独立唤醒并启动展开。每个查询都将恢复。

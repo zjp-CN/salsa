@@ -1,18 +1,22 @@
+<!-- master#68cb5e9 --->
+
 # Memo
 
-A *memo* stores information about the last time that a [query function] for some [query] Q was executed:
+memo 存储有关上次执行某个查询 ([query]) Q 的 [query function] 的信息：
 
-* Typically, it contains the value that was returned from that function, so that we don't have to execute it again.
-    * However, this is not always true: some queries don't cache their result values, and values can also be dropped as a result of [LRU] collection. In those cases, the memo just stores [dependency] information, which can still be useful to determine if other queries that have Q as a [dependency] may have changed.
-* The revision in which the memo last [verified].
-* The [changed at] revision in which the memo's value last changed. (Note that it may be [backdated].)
-* The minimum durability of the memo's [dependencies].
-* The complete set of [dependencies], if available, or a marker that the memo has an [untracked dependency].
+* 通常，它包含从该查询函数返回的值，因此不必再次执行这个查询函数。
+  * 然而，这并不总是正确的：一些查询不缓存其结果值，并且值也可能由于 [LRU] 集合而被删除。
+  * 此时，memo 仅存储依赖项 ([dependency]) 的信息，该信息对于确定将 Q 作为依赖项的其他查询是否已更改很有用。
+* memo 上次验证 ([verified]) 的修订版本 ([revision])。
+* memo 的值上次更改的 ([changed at]) 修订版本。注意，它可能是回溯的 ([backdated])。
+* memo 的依赖项 ([dependencies]) 的最小持久性 ([durability]) 。
+* （如果有的话）完整的依赖项的集合，或 memo 未跟踪的依赖项 ([untracked dependency]) 的标记。
 
 [revision]: ./revision.md
 [backdated]: ./backdate.md
 [dependencies]: ./dependency.md
 [dependency]: ./dependency.md
+[durability]: ./durability.md
 [untracked dependency]: ./untracked.md
 [verified]: ./verified.md
 [query]: ./query.md

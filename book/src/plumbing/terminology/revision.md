@@ -1,5 +1,9 @@
+<!-- master#68cb5e9 --->
+
 # Revision
 
-A *revision* is a monotonically increasing integer that we use to track the "version" of the database. Each time the value of an [input query] is modified, we create a new revision.
+修订版本 (revision)：指一个单调递增的整数，Salsa 用它来跟踪数据库的“版本”。
+
+每次修改 [input query] 的值时，Salsa 都会创建一个新的修订版本。
 
 [input query]: ./input_query.md
