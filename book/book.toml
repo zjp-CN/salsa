@@ -9,7 +9,10 @@ create-missing = false
 
 # [preprocessor.theme]
 # pagetoc = true
-# sidebar-width = "250px"
+# sidebar-width = "280px"
+# sidebar-font-size = "0.9em"
+# nav-chapters-max-width = "3%"
+# nav-chapters-min-width = "3%"
 
 [output.html.fold]
 enable = false
