@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="sidebar-visible no-js ayu">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Jars and databases - Salsa</title>
+        <title>Jars 和数据库 - Salsa（中文介绍）</title>
                 
 
         <!-- Custom HTML head -->
@@ -19,7 +19,6 @@
                 <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
-                <link rel="stylesheet" href="../css/print.css" media="print">
         
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
@@ -32,13 +31,14 @@
 
         <!-- Custom theme stylesheets -->
                 <link rel="stylesheet" href="../mermaid.css">
+                <link rel="stylesheet" href="../theme/pagetoc.css">
         
             </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -64,7 +64,7 @@
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
-            html.classList.remove('light')
+            html.classList.remove('ayu')
             html.classList.add(theme);
             html.classList.add('js');
         </script>
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../about_salsa.html"><strong aria-hidden="true">1.</strong> About salsa</a></li><li class="chapter-item expanded affix "><li class="part-title">How to use Salsa</li><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">2.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../tutorial.html"><strong aria-hidden="true">3.</strong> Tutorial: calc language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tutorial/structure.html"><strong aria-hidden="true">3.1.</strong> Basic structure</a></li><li class="chapter-item expanded "><a href="../tutorial/jar.html" class="active"><strong aria-hidden="true">3.2.</strong> Jars and databases</a></li><li class="chapter-item expanded "><a href="../tutorial/db.html"><strong aria-hidden="true">3.3.</strong> Defining the database struct</a></li><li class="chapter-item expanded "><a href="../tutorial/ir.html"><strong aria-hidden="true">3.4.</strong> Defining the IR: the various &quot;salsa structs&quot;</a></li><li class="chapter-item expanded "><a href="../tutorial/parser.html"><strong aria-hidden="true">3.5.</strong> Defining the parser: memoized functions and inputs</a></li><li class="chapter-item expanded "><a href="../tutorial/accumulators.html"><strong aria-hidden="true">3.6.</strong> Defining the parser: reporting errors</a></li><li class="chapter-item expanded "><a href="../tutorial/debug.html"><strong aria-hidden="true">3.7.</strong> Defining the parser: debug impls and testing</a></li><li class="chapter-item expanded "><a href="../tutorial/checker.html"><strong aria-hidden="true">3.8.</strong> Defining the checker</a></li><li class="chapter-item expanded "><a href="../tutorial/interpreter.html"><strong aria-hidden="true">3.9.</strong> Defining the interpreter</a></li></ol></li><li class="chapter-item expanded "><a href="../reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/algorithm.html"><strong aria-hidden="true">4.1.</strong> Algorithm</a></li></ol></li><li class="chapter-item expanded "><a href="../common_patterns.html"><strong aria-hidden="true">5.</strong> Common patterns</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../common_patterns/selection.html"><strong aria-hidden="true">5.1.</strong> Selection</a></li><li class="chapter-item expanded "><a href="../common_patterns/on_demand_inputs.html"><strong aria-hidden="true">5.2.</strong> On-demand (Lazy) inputs</a></li></ol></li><li class="chapter-item expanded "><a href="../tuning.html"><strong aria-hidden="true">6.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="../cycles.html"><strong aria-hidden="true">7.</strong> Cycle handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cycles/fallback.html"><strong aria-hidden="true">7.1.</strong> Recovering via fallback</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">How Salsa works internally</li><li class="chapter-item expanded "><a href="../how_salsa_works.html"><strong aria-hidden="true">8.</strong> How Salsa works</a></li><li class="chapter-item expanded "><a href="../videos.html"><strong aria-hidden="true">9.</strong> Videos</a></li><li class="chapter-item expanded "><a href="../plumbing.html"><strong aria-hidden="true">10.</strong> Plumbing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/jars_and_ingredients.html"><strong aria-hidden="true">10.1.</strong> Jars and ingredients</a></li><li class="chapter-item expanded "><a href="../plumbing/database_and_runtime.html"><strong aria-hidden="true">10.2.</strong> Databases and runtime</a></li><li class="chapter-item expanded "><a href="../plumbing/query_ops.html"><strong aria-hidden="true">10.3.</strong> Query operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/maybe_changed_after.html"><strong aria-hidden="true">10.3.1.</strong> maybe changed after</a></li><li class="chapter-item expanded "><a href="../plumbing/fetch.html"><strong aria-hidden="true">10.3.2.</strong> Fetch</a></li><li class="chapter-item expanded "><a href="../plumbing/derived_flowchart.html"><strong aria-hidden="true">10.3.3.</strong> Derived queries flowchart</a></li><li class="chapter-item expanded "><a href="../plumbing/cycles.html"><strong aria-hidden="true">10.3.4.</strong> Cycle handling</a></li></ol></li><li class="chapter-item expanded "><a href="../plumbing/terminology.html"><strong aria-hidden="true">10.4.</strong> Terminology</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/terminology/backdate.html"><strong aria-hidden="true">10.4.1.</strong> Backdate</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/changed_at.html"><strong aria-hidden="true">10.4.2.</strong> Changed at</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/dependency.html"><strong aria-hidden="true">10.4.3.</strong> Dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/derived_query.html"><strong aria-hidden="true">10.4.4.</strong> Derived query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/durability.html"><strong aria-hidden="true">10.4.5.</strong> Durability</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/input_query.html"><strong aria-hidden="true">10.4.6.</strong> Input query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/ingredient.html"><strong aria-hidden="true">10.4.7.</strong> Ingredient</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/LRU.html"><strong aria-hidden="true">10.4.8.</strong> LRU</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/memo.html"><strong aria-hidden="true">10.4.9.</strong> Memo</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query.html"><strong aria-hidden="true">10.4.10.</strong> Query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query_function.html"><strong aria-hidden="true">10.4.11.</strong> Query function</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/revision.html"><strong aria-hidden="true">10.4.12.</strong> Revision</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_item.html"><strong aria-hidden="true">10.4.13.</strong> Salsa item</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_struct.html"><strong aria-hidden="true">10.4.14.</strong> Salsa struct</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/untracked.html"><strong aria-hidden="true">10.4.15.</strong> Untracked dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/verified.html"><strong aria-hidden="true">10.4.16.</strong> Verified</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="../meta.html"><strong aria-hidden="true">11.</strong> Meta: about the book itself</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../about_salsa.html"><strong aria-hidden="true">1.</strong> 关于 salsa</a></li><li class="chapter-item expanded affix "><li class="part-title">如何使用 Salsa</li><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">2.</strong> 概述</a></li><li class="chapter-item expanded "><a href="../tutorial.html"><strong aria-hidden="true">3.</strong> 教程： calc 语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tutorial/structure.html"><strong aria-hidden="true">3.1.</strong> 基本结构</a></li><li class="chapter-item expanded "><a href="../tutorial/jar.html" class="active"><strong aria-hidden="true">3.2.</strong> Jars 和数据库</a></li><li class="chapter-item expanded "><a href="../tutorial/db.html"><strong aria-hidden="true">3.3.</strong> 定义数据库结构体</a></li><li class="chapter-item expanded "><a href="../tutorial/ir.html"><strong aria-hidden="true">3.4.</strong> 定义 IR：各种 Salsa 结构体</a></li><li class="chapter-item expanded "><a href="../tutorial/parser.html"><strong aria-hidden="true">3.5.</strong> 定义解析器：存储函数的值和输入</a></li><li class="chapter-item expanded "><a href="../tutorial/accumulators.html"><strong aria-hidden="true">3.6.</strong> 定义解析器：报告错误</a></li><li class="chapter-item expanded "><a href="../tutorial/debug.html"><strong aria-hidden="true">3.7.</strong> 定义解析器：debug 与测试</a></li><li class="chapter-item expanded "><a href="../tutorial/checker.html"><strong aria-hidden="true">3.8.</strong> Defining the checker</a></li><li class="chapter-item expanded "><a href="../tutorial/interpreter.html"><strong aria-hidden="true">3.9.</strong> Defining the interpreter</a></li></ol></li><li class="chapter-item expanded "><a href="../reference.html"><strong aria-hidden="true">4.</strong> 参考</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/algorithm.html"><strong aria-hidden="true">4.1.</strong> 算法</a></li></ol></li><li class="chapter-item expanded "><a href="../common_patterns.html"><strong aria-hidden="true">5.</strong> 模式</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../common_patterns/selection.html"><strong aria-hidden="true">5.1.</strong> 选择</a></li><li class="chapter-item expanded "><a href="../common_patterns/on_demand_inputs.html"><strong aria-hidden="true">5.2.</strong> 按需（惰性）输入</a></li></ol></li><li class="chapter-item expanded "><a href="../tuning.html"><strong aria-hidden="true">6.</strong> 调参</a></li><li class="chapter-item expanded "><a href="../cycles.html"><strong aria-hidden="true">7.</strong> 处理循环</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cycles/fallback.html"><strong aria-hidden="true">7.1.</strong> 通过回退恢复</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Salsa 内部如何工作</li><li class="chapter-item expanded "><a href="../how_salsa_works.html"><strong aria-hidden="true">8.</strong> Salsa 如何工作</a></li><li class="chapter-item expanded "><a href="../videos.html"><strong aria-hidden="true">9.</strong> 视频介绍</a></li><li class="chapter-item expanded "><a href="../plumbing.html"><strong aria-hidden="true">10.</strong> 管道</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/jars_and_ingredients.html"><strong aria-hidden="true">10.1.</strong> Jars 和配料</a></li><li class="chapter-item expanded "><a href="../plumbing/database_and_runtime.html"><strong aria-hidden="true">10.2.</strong> 数据库和运行时</a></li><li class="chapter-item expanded "><a href="../plumbing/query_ops.html"><strong aria-hidden="true">10.3.</strong> 查询操作</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/maybe_changed_after.html"><strong aria-hidden="true">10.3.1.</strong> maybe_changed_after</a></li><li class="chapter-item expanded "><a href="../plumbing/fetch.html"><strong aria-hidden="true">10.3.2.</strong> fetch</a></li><li class="chapter-item expanded "><a href="../plumbing/derived_flowchart.html"><strong aria-hidden="true">10.3.3.</strong> 派生查询流程图</a></li><li class="chapter-item expanded "><a href="../plumbing/cycles.html"><strong aria-hidden="true">10.3.4.</strong> 处理循环</a></li></ol></li><li class="chapter-item expanded "><a href="../plumbing/terminology.html"><strong aria-hidden="true">10.4.</strong> 术语</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/terminology/backdate.html"><strong aria-hidden="true">10.4.1.</strong> Backdate</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/changed_at.html"><strong aria-hidden="true">10.4.2.</strong> Changed at</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/dependency.html"><strong aria-hidden="true">10.4.3.</strong> Dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/derived_query.html"><strong aria-hidden="true">10.4.4.</strong> Derived query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/durability.html"><strong aria-hidden="true">10.4.5.</strong> Durability</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/input_query.html"><strong aria-hidden="true">10.4.6.</strong> Input query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/ingredient.html"><strong aria-hidden="true">10.4.7.</strong> Ingredient</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/LRU.html"><strong aria-hidden="true">10.4.8.</strong> LRU</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/memo.html"><strong aria-hidden="true">10.4.9.</strong> Memo</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query.html"><strong aria-hidden="true">10.4.10.</strong> Query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query_function.html"><strong aria-hidden="true">10.4.11.</strong> Query function</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/revision.html"><strong aria-hidden="true">10.4.12.</strong> Revision</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_item.html"><strong aria-hidden="true">10.4.13.</strong> Salsa item</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_struct.html"><strong aria-hidden="true">10.4.14.</strong> Salsa struct</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/untracked.html"><strong aria-hidden="true">10.4.15.</strong> Untracked dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/verified.html"><strong aria-hidden="true">10.4.16.</strong> Verified</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">附录</li><li class="chapter-item expanded "><a href="../meta.html"><strong aria-hidden="true">11.</strong> 关于这本书本身</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -101,24 +101,27 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
                         </ul>
                                                 <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                                             </div>
 
-                    <h1 class="menu-title">Salsa</h1>
+                    <h1 class="menu-title">Salsa（中文介绍）</h1>
 
                     <div class="right-buttons">
-                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
-                            <i id="print-button" class="fa fa-print"></i>
+                                                                        <a href="https://github.com/zjp-CN/salsa/tree/Chinese" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                                                                        
+                                                                        <a href="https://github.com/zjp-CN/salsa/edit/Chinese/book/src/tutorial/jar.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
                     </div>
                 </div>
 
@@ -144,21 +147,58 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="jars-and-databases"><a class="header" href="#jars-and-databases">Jars and databases</a></h1>
-<p>Before we can define the interesting parts of our Salsa program, we have to setup a bit of structure that defines the Salsa <strong>database</strong>.
-The database is a struct that ultimately stores all of Salsa's intermediate state, such as the memoized return values from <a href="../overview.html#tracked-functions">tracked functions</a>.</p>
-<p>The database itself is defined in terms of intermediate structures, called <strong>jars</strong><sup class="footnote-reference"><a href="#jar">1</a></sup>, which themselves contain the data for each function.
-This setup allows Salsa programs to be divided amongst many crates.
-Typically, you define one jar struct per crate, and then when you construct the final database, you simply list the jar structs.
-This permits the crates to define private functions and other things that are members of the jar struct, but not known directly to the database.</p>
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- Page table of contents -->
+                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
+
+                        <!-- master#1363d78 --->
+<h1 id="jar-和数据库"><a class="header" href="#jar-和数据库">Jar 和数据库</a></h1>
+<p>在定义 Salsa 程序的有趣部分之前，我们必须先定义 Salsa 数据库的结构体。</p>
+<p>数据库是一个结构体，它最终存储 Salsa 的所有中间状态，例如来自<a href="../overview.html#tracked-fn">跟踪函数</a>的被记忆的 (memoized) 返回值。</p>
+<p>数据库本身是以一些中间结构 (intermediate structure) 的形式定义的，这些中间结构被称为 <strong>jars</strong><sup class="footnote-reference"><a href="#jar">1</a></sup>，并包含每个函数的数据。</p>
+<p>这种设置允许 Salsa 程序在多个 crates 中划分功能。</p>
+<p>通常，你为每个 crate 定义一个 Jar 结构，然后在构建最终的数据库时，只需列出 Jar 结构。</p>
+<p>这让 crates 定义私有函数和其他属于 Jar 结构的内容，但数据库不直接知道这些内容。</p>
 <div class="footnote-definition" id="jar"><sup class="footnote-definition-label">1</sup>
-<p>Jars of salsa -- get it? Get it??<sup class="footnote-reference"><a href="#java">2</a></sup></p>
+<p>一罐 Salsa 酱。嗯，明白了吗？明白为什么叫 Jar 了吗？<sup class="footnote-reference"><a href="#java">2</a></sup></p>
 </div>
 <div class="footnote-definition" id="java"><sup class="footnote-definition-label">2</sup>
-<p>OK, maybe it also brings to mind Java <code>.jar</code> files, but there's no real relationship. A jar is just a Rust struct, not a packaging format.</p>
+<p>好吧，也许它也会让人联想到 Java 的 <code>.jar</code> 文件，但它们并没有真正的关系。Jar 只是一个 Rust 结构体，而不是一种包装格式。</p>
 </div>
-<h2 id="defining-a-jar-struct"><a class="header" href="#defining-a-jar-struct">Defining a jar struct</a></h2>
-<p>To define a jar struct, you create a tuple struct with the <code>#[salsa::jar]</code> annotation:</p>
+<h2 id="定义-jar-结构体"><a class="header" href="#定义-jar-结构体">定义 Jar 结构体</a></h2>
+<p>给一个元组结构体使用 <code>#[salsa::jar]</code> 属性来定义 Jar 结构体：</p>
 <pre><pre class="playground"><code class="language-rust">
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -179,53 +219,48 @@ pub struct Jar(
 );
 <span class="boring">}
 </span></code></pre></pre>
-<p>Although it's not required, it's highly recommended to put the <code>jar</code> struct at the root of your crate, so that it can be referred to as <code>crate::Jar</code>.
-All of the other Salsa annotations reference a jar struct, and they all default to the path <code>crate::Jar</code>. 
-If you put the jar somewhere else, you will have to override that default.</p>
-<h2 id="defining-the-database-trait"><a class="header" href="#defining-the-database-trait">Defining the database trait</a></h2>
-<p>The <code>#[salsa::jar]</code> annotation also includes a <code>db = Db</code> field. 
-The value of this field (normally <code>Db</code>) is the name of a trait that represents the database.
-Salsa programs never refer <em>directly</em> to the database; instead, they take a <code>&amp;dyn Db</code> argument.
-This allows for separate compilation, where you have a database that contains the data for two jars, but those jars don't depend on one another.</p>
-<p>The database trait for our <code>calc</code> crate is very simple:</p>
+<p>虽然这不是必需的，但强烈建议：将 <code>Jar</code> 结构放在你的 crate 的根模块，这样它就可以通过 <code>crate::Jar</code> 路径使用。</p>
+<p>所有其他的 salsa 注释都引用了 Jar 结构体，并且它们都默认 <code>crate::Jar</code> 路径。如果你将 Jar 放在其他地方，则必须覆盖该默认值。</p>
+<h2 id="定义数据库-trait"><a class="header" href="#定义数据库-trait">定义数据库 trait</a></h2>
+<p><code>#[salsa::jar]</code> 中还包含 <code>db = Db</code> 字段。此字段的值（通常为 <code>Db</code> ）代表数据库的 trait 的名称。</p>
+<p>Salsa 程序从不直接引用数据库；相反，它们使用 <code>&amp;dyn Db</code> 参数。</p>
+<p>这可以单独编译：你有一个数据库，其中包含两个 Jars 的数据，但这些 Jars 彼此不依赖。</p>
+<p>我们的 <code>calc</code> crate 的数据库 trait 非常简单：</p>
 <pre><pre class="playground"><code class="language-rust">
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub trait Db: salsa::DbWithJar&lt;Jar&gt; {}
 <span class="boring">}
 </span></code></pre></pre>
-<p>When you define a database trait like <code>Db</code>, the one thing that is required is that it must have a supertrait <code>salsa::DbWithJar&lt;Jar&gt;</code>,
-where <code>Jar</code> is the jar struct. If your jar depends on other jars, you can have multiple such supertraits (e.g., <code>salsa::DbWithJar&lt;other_crate::Jar&gt;</code>).</p>
-<p>Typically the <code>Db</code> trait has no other members or supertraits, but you are also free to add whatever other things you want in the trait.
-When you define your final database, it will implement the trait, and you can then define the implementation of those other things.
-This allows you to create a way for your jar to request context or other info from the database that is not moderated through Salsa,
-should you need that.</p>
-<h2 id="implementing-the-database-trait-for-the-jar"><a class="header" href="#implementing-the-database-trait-for-the-jar">Implementing the database trait for the jar</a></h2>
-<p>The <code>Db</code> trait must be implemented by the database struct.
-We're going to define the database struct in a <a href="./db.html">later section</a>,
-and one option would be to simply implement the jar <code>Db</code> trait there.
-However, since we don't define any custom logic in the trait,
-a common choice is to write a blanket impl for any type that implements <code>DbWithJar&lt;Jar&gt;</code>,
-and that's what we do here:</p>
+<p>当你定义像 <code>Db</code> 这样的数据库 trait 时，需要做的一件事是，它必须有一个 supertrait <code>salsa::DbWithJar&lt;Jar&gt;</code>，其中 <code>Jar</code> 是 Jar 结构体。</p>
+<p>如果你的 Jar 依赖于其他 Jar，则可拥有多个这样的超特征（例如， <code>salsa::DbWithJar&lt;other_crate::Jar&gt;</code>）。</p>
+<p>通常情况下，<code>Db</code> trait 没有其他成员或 supertraits，但你也可以自由地在该 trait 中添加任何你想要的其他东西。</p>
+<p>当你定义最终的数据库时，它将实现这个 <code>Db</code> trait，然后你可以定义这些其他内容的实现。</p>
+<p>这让你为 Jar 在需要时从数据库请求上下文或其他信息，而不是通过 Salsa 进行管理。</p>
+<h2 id="给-jar-实现数据库-trait"><a class="header" href="#给-jar-实现数据库-trait">给 Jar 实现数据库 trait</a></h2>
+<p>必须给数据库结构体实现 <code>Db</code> trait。</p>
+<p>我们将在<a href="./db.html">后面的小节</a>中定义数据库结构体，一种方式是在那里简单地实现 <code>Db</code> trait。</p>
+<p>然而，由于我们没有在 trait 中定义任何逻辑，一种常见的做法是为实现了 <code>DbWithJar&lt;Jar&gt;</code> 的任何类型编写一个
+blanket impl，像这样：</p>
 <pre><pre class="playground"><code class="language-rust">
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>impl&lt;DB&gt; Db for DB where DB: ?Sized + salsa::DbWithJar&lt;Jar&gt; {}
 <span class="boring">}
 </span></code></pre></pre>
-<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
-<p>If the concept of a jar seems a bit abstract to you, don't overthink it. The TL;DR is that when you create a Salsa program, you need to perform the following steps:</p>
+<h2 id="总结"><a class="header" href="#总结">总结</a></h2>
+<p>如果 Jar 的概念对你来说有点抽象，不要想太多。长话短说，它是指在创建 Salsa 程序时，你需要做以下几件事：</p>
 <ul>
-<li>In each of your crates:
+<li>在每个 crates 中：
 <ul>
-<li>Define a <code>#[salsa::jar(db = Db)]</code> struct, typically at <code>crate::Jar</code>, and list each of your various Salsa-annotated things inside of it.</li>
-<li>Define a <code>Db</code> trait, typically at <code>crate::Db</code>, that you will use in memoized functions and elsewhere to refer to the database struct.</li>
+<li>定义一个带 <code>#[salsa::jar(db = Db)]</code> 的结构体，且通常位于根模块，所以它是 <code>crate::Jar</code>，并在其中列出各种带 salsa 注释的东西。</li>
+<li>定义一个 <code>Db</code> trait，通常为 <code>crate::Db</code> ，你将在 memoized 函数和其他地方使用它来引用数据库结构体。</li>
 </ul>
 </li>
-<li>Once, typically in your final crate:
+<li>只做一次，通常在最后一个 crate 中：
 <ul>
-<li>Define a database <code>D</code>, as described in the <a href="./db.html">next section</a>, that will contain a list of each of the jars for each of your crates.</li>
-<li>Implement the <code>Db</code> traits for each jar for your database type <code>D</code> (often we do this through blanket impls in the jar crates).</li>
+<li>定义一个数据库 <code>D</code>，如<a href="./db.html">下一节</a>所述，它为每个 crate 的 Jar 的列表</li>
+<li>给数据库类型 <code>D</code> 的每个 Jar 实现 <code>Db</code> trait（通常通过 blanket impl 实现）</li>
 </ul>
 </li>
 </ul>
@@ -278,6 +313,7 @@ and that's what we do here:</p>
         <!-- Custom JS scripts -->
                 <script type="text/javascript" src="../mermaid.min.js"></script>
                 <script type="text/javascript" src="../mermaid-init.js"></script>
+                <script type="text/javascript" src="../theme/pagetoc.js"></script>
         
         
     </body>
