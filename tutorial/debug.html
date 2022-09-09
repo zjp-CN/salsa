@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js ayu">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>定义解析器：debug 与测试 - Salsa（中文介绍）</title>
+        <title>Defining the parser: debug impls and testing - Salsa</title>
                 
 
         <!-- Custom HTML head -->
@@ -19,6 +19,7 @@
                 <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
         
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
@@ -31,14 +32,13 @@
 
         <!-- Custom theme stylesheets -->
                 <link rel="stylesheet" href="../mermaid.css">
-                <link rel="stylesheet" href="../theme/pagetoc.css">
         
             </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -64,7 +64,7 @@
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
             html.classList.remove('no-js')
-            html.classList.remove('ayu')
+            html.classList.remove('light')
             html.classList.add(theme);
             html.classList.add('js');
         </script>
@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../about_salsa.html"><strong aria-hidden="true">1.</strong> 关于 salsa</a></li><li class="chapter-item expanded affix "><li class="part-title">如何使用 Salsa</li><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">2.</strong> 概述</a></li><li class="chapter-item expanded "><a href="../tutorial.html"><strong aria-hidden="true">3.</strong> 教程： calc 语言</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tutorial/structure.html"><strong aria-hidden="true">3.1.</strong> 基本结构</a></li><li class="chapter-item expanded "><a href="../tutorial/jar.html"><strong aria-hidden="true">3.2.</strong> Jars 和数据库</a></li><li class="chapter-item expanded "><a href="../tutorial/db.html"><strong aria-hidden="true">3.3.</strong> 定义数据库结构体</a></li><li class="chapter-item expanded "><a href="../tutorial/ir.html"><strong aria-hidden="true">3.4.</strong> 定义 IR：各种 Salsa 结构体</a></li><li class="chapter-item expanded "><a href="../tutorial/parser.html"><strong aria-hidden="true">3.5.</strong> 定义解析器：存储函数的值和输入</a></li><li class="chapter-item expanded "><a href="../tutorial/accumulators.html"><strong aria-hidden="true">3.6.</strong> 定义解析器：报告错误</a></li><li class="chapter-item expanded "><a href="../tutorial/debug.html" class="active"><strong aria-hidden="true">3.7.</strong> 定义解析器：debug 与测试</a></li><li class="chapter-item expanded "><a href="../tutorial/checker.html"><strong aria-hidden="true">3.8.</strong> Defining the checker</a></li><li class="chapter-item expanded "><a href="../tutorial/interpreter.html"><strong aria-hidden="true">3.9.</strong> Defining the interpreter</a></li></ol></li><li class="chapter-item expanded "><a href="../reference.html"><strong aria-hidden="true">4.</strong> 参考</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/algorithm.html"><strong aria-hidden="true">4.1.</strong> 算法</a></li></ol></li><li class="chapter-item expanded "><a href="../common_patterns.html"><strong aria-hidden="true">5.</strong> 模式</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../common_patterns/selection.html"><strong aria-hidden="true">5.1.</strong> 选择</a></li><li class="chapter-item expanded "><a href="../common_patterns/on_demand_inputs.html"><strong aria-hidden="true">5.2.</strong> 按需（惰性）输入</a></li></ol></li><li class="chapter-item expanded "><a href="../tuning.html"><strong aria-hidden="true">6.</strong> 调参</a></li><li class="chapter-item expanded "><a href="../cycles.html"><strong aria-hidden="true">7.</strong> 处理循环</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cycles/fallback.html"><strong aria-hidden="true">7.1.</strong> 通过回退恢复</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">Salsa 内部如何工作</li><li class="chapter-item expanded "><a href="../how_salsa_works.html"><strong aria-hidden="true">8.</strong> Salsa 如何工作</a></li><li class="chapter-item expanded "><a href="../videos.html"><strong aria-hidden="true">9.</strong> 视频介绍</a></li><li class="chapter-item expanded "><a href="../plumbing.html"><strong aria-hidden="true">10.</strong> 管道</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/jars_and_ingredients.html"><strong aria-hidden="true">10.1.</strong> Jars 和配料</a></li><li class="chapter-item expanded "><a href="../plumbing/database_and_runtime.html"><strong aria-hidden="true">10.2.</strong> 数据库和运行时</a></li><li class="chapter-item expanded "><a href="../plumbing/query_ops.html"><strong aria-hidden="true">10.3.</strong> 查询操作</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/maybe_changed_after.html"><strong aria-hidden="true">10.3.1.</strong> maybe_changed_after</a></li><li class="chapter-item expanded "><a href="../plumbing/fetch.html"><strong aria-hidden="true">10.3.2.</strong> fetch</a></li><li class="chapter-item expanded "><a href="../plumbing/derived_flowchart.html"><strong aria-hidden="true">10.3.3.</strong> 派生查询流程图</a></li><li class="chapter-item expanded "><a href="../plumbing/cycles.html"><strong aria-hidden="true">10.3.4.</strong> 处理循环</a></li></ol></li><li class="chapter-item expanded "><a href="../plumbing/terminology.html"><strong aria-hidden="true">10.4.</strong> 术语</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/terminology/backdate.html"><strong aria-hidden="true">10.4.1.</strong> Backdate</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/changed_at.html"><strong aria-hidden="true">10.4.2.</strong> Changed at</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/dependency.html"><strong aria-hidden="true">10.4.3.</strong> Dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/derived_query.html"><strong aria-hidden="true">10.4.4.</strong> Derived query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/durability.html"><strong aria-hidden="true">10.4.5.</strong> Durability</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/input_query.html"><strong aria-hidden="true">10.4.6.</strong> Input query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/ingredient.html"><strong aria-hidden="true">10.4.7.</strong> Ingredient</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/LRU.html"><strong aria-hidden="true">10.4.8.</strong> LRU</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/memo.html"><strong aria-hidden="true">10.4.9.</strong> Memo</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query.html"><strong aria-hidden="true">10.4.10.</strong> Query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query_function.html"><strong aria-hidden="true">10.4.11.</strong> Query function</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/revision.html"><strong aria-hidden="true">10.4.12.</strong> Revision</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_item.html"><strong aria-hidden="true">10.4.13.</strong> Salsa item</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_struct.html"><strong aria-hidden="true">10.4.14.</strong> Salsa struct</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/untracked.html"><strong aria-hidden="true">10.4.15.</strong> Untracked dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/verified.html"><strong aria-hidden="true">10.4.16.</strong> Verified</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">附录</li><li class="chapter-item expanded "><a href="../meta.html"><strong aria-hidden="true">11.</strong> 关于这本书本身</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../about_salsa.html"><strong aria-hidden="true">1.</strong> About salsa</a></li><li class="chapter-item expanded affix "><li class="part-title">How to use Salsa</li><li class="chapter-item expanded "><a href="../overview.html"><strong aria-hidden="true">2.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../tutorial.html"><strong aria-hidden="true">3.</strong> Tutorial: calc language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tutorial/structure.html"><strong aria-hidden="true">3.1.</strong> Basic structure</a></li><li class="chapter-item expanded "><a href="../tutorial/jar.html"><strong aria-hidden="true">3.2.</strong> Jars and databases</a></li><li class="chapter-item expanded "><a href="../tutorial/db.html"><strong aria-hidden="true">3.3.</strong> Defining the database struct</a></li><li class="chapter-item expanded "><a href="../tutorial/ir.html"><strong aria-hidden="true">3.4.</strong> Defining the IR: the various &quot;salsa structs&quot;</a></li><li class="chapter-item expanded "><a href="../tutorial/parser.html"><strong aria-hidden="true">3.5.</strong> Defining the parser: memoized functions and inputs</a></li><li class="chapter-item expanded "><a href="../tutorial/accumulators.html"><strong aria-hidden="true">3.6.</strong> Defining the parser: reporting errors</a></li><li class="chapter-item expanded "><a href="../tutorial/debug.html" class="active"><strong aria-hidden="true">3.7.</strong> Defining the parser: debug impls and testing</a></li><li class="chapter-item expanded "><a href="../tutorial/checker.html"><strong aria-hidden="true">3.8.</strong> Defining the checker</a></li><li class="chapter-item expanded "><a href="../tutorial/interpreter.html"><strong aria-hidden="true">3.9.</strong> Defining the interpreter</a></li></ol></li><li class="chapter-item expanded "><a href="../reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../reference/algorithm.html"><strong aria-hidden="true">4.1.</strong> Algorithm</a></li></ol></li><li class="chapter-item expanded "><a href="../common_patterns.html"><strong aria-hidden="true">5.</strong> Common patterns</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../common_patterns/selection.html"><strong aria-hidden="true">5.1.</strong> Selection</a></li><li class="chapter-item expanded "><a href="../common_patterns/on_demand_inputs.html"><strong aria-hidden="true">5.2.</strong> On-demand (Lazy) inputs</a></li></ol></li><li class="chapter-item expanded "><a href="../tuning.html"><strong aria-hidden="true">6.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="../cycles.html"><strong aria-hidden="true">7.</strong> Cycle handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cycles/fallback.html"><strong aria-hidden="true">7.1.</strong> Recovering via fallback</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">How Salsa works internally</li><li class="chapter-item expanded "><a href="../how_salsa_works.html"><strong aria-hidden="true">8.</strong> How Salsa works</a></li><li class="chapter-item expanded "><a href="../videos.html"><strong aria-hidden="true">9.</strong> Videos</a></li><li class="chapter-item expanded "><a href="../plumbing.html"><strong aria-hidden="true">10.</strong> Plumbing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/jars_and_ingredients.html"><strong aria-hidden="true">10.1.</strong> Jars and ingredients</a></li><li class="chapter-item expanded "><a href="../plumbing/database_and_runtime.html"><strong aria-hidden="true">10.2.</strong> Databases and runtime</a></li><li class="chapter-item expanded "><a href="../plumbing/query_ops.html"><strong aria-hidden="true">10.3.</strong> Query operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/maybe_changed_after.html"><strong aria-hidden="true">10.3.1.</strong> maybe changed after</a></li><li class="chapter-item expanded "><a href="../plumbing/fetch.html"><strong aria-hidden="true">10.3.2.</strong> Fetch</a></li><li class="chapter-item expanded "><a href="../plumbing/derived_flowchart.html"><strong aria-hidden="true">10.3.3.</strong> Derived queries flowchart</a></li><li class="chapter-item expanded "><a href="../plumbing/cycles.html"><strong aria-hidden="true">10.3.4.</strong> Cycle handling</a></li></ol></li><li class="chapter-item expanded "><a href="../plumbing/terminology.html"><strong aria-hidden="true">10.4.</strong> Terminology</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../plumbing/terminology/backdate.html"><strong aria-hidden="true">10.4.1.</strong> Backdate</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/changed_at.html"><strong aria-hidden="true">10.4.2.</strong> Changed at</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/dependency.html"><strong aria-hidden="true">10.4.3.</strong> Dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/derived_query.html"><strong aria-hidden="true">10.4.4.</strong> Derived query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/durability.html"><strong aria-hidden="true">10.4.5.</strong> Durability</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/input_query.html"><strong aria-hidden="true">10.4.6.</strong> Input query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/ingredient.html"><strong aria-hidden="true">10.4.7.</strong> Ingredient</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/LRU.html"><strong aria-hidden="true">10.4.8.</strong> LRU</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/memo.html"><strong aria-hidden="true">10.4.9.</strong> Memo</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query.html"><strong aria-hidden="true">10.4.10.</strong> Query</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/query_function.html"><strong aria-hidden="true">10.4.11.</strong> Query function</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/revision.html"><strong aria-hidden="true">10.4.12.</strong> Revision</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_item.html"><strong aria-hidden="true">10.4.13.</strong> Salsa item</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/salsa_struct.html"><strong aria-hidden="true">10.4.14.</strong> Salsa struct</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/untracked.html"><strong aria-hidden="true">10.4.15.</strong> Untracked dependency</a></li><li class="chapter-item expanded "><a href="../plumbing/terminology/verified.html"><strong aria-hidden="true">10.4.16.</strong> Verified</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="../meta.html"><strong aria-hidden="true">11.</strong> Meta: about the book itself</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -101,27 +101,24 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
                                                 <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
                                             </div>
 
-                    <h1 class="menu-title">Salsa（中文介绍）</h1>
+                    <h1 class="menu-title">Salsa</h1>
 
                     <div class="right-buttons">
-                                                                        <a href="https://github.com/zjp-CN/salsa/tree/Chinese" title="Git repository" aria-label="Git repository">
-                            <i id="git-repository-button" class="fa fa-github"></i>
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                        <a href="https://github.com/zjp-CN/salsa/edit/Chinese/book/src/tutorial/debug.md" title="Suggest an edit" aria-label="Suggest an edit">
-                            <i id="git-edit-button" class="fa fa-edit"></i>
-                        </a>
-                        
+                                                                        
                     </div>
                 </div>
 
@@ -147,39 +144,39 @@
 
                 <div id="content" class="content">
                     <main>
-                        <!-- Page table of contents -->
-                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
-
-                        <!-- Page table of contents -->
-                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
-
-                        <!-- Page table of contents -->
-                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
-
-                        <!-- Page table of contents -->
-                        <div class="sidetoc"><nav class="pagetoc"></nav></div>
-
-                        <!-- master#657b856 --->
-<h1 id="定义解析器debug-与测试"><a class="header" href="#定义解析器debug-与测试">定义解析器：debug 与测试</a></h1>
-<p>作为解析器的最后一部分，我们需要编写一些测试。为此，我们将创建一个数据库，设置输入源文本，运行解析器并检查结果。</p>
-<p>然而，在我们能够做到这一点之前，必须先解决一个问题：如何查看像 <code>Expression</code> 这样的被 interned 的类型的值呢？</p>
-<h2 id="debugwithdb-trait"><a class="header" href="#debugwithdb-trait"><code>DebugWithDb</code> trait</a></h2>
-<p>因为像 <code>Expression</code> 这样的 interned 类型只存储一个整数，所以传统的 <code>Debug</code> trait 并不是很有用。</p>
-<p>要正确打印 <code>Expression</code>，你需要访问 Salsa 数据库以找出它的值。</p>
-<p>为了解决这个问题，Salsa 提供了一个 <code>DebugWithDb</code> trait，它的行为类似于常规的 <code>Debug</code>，但以数据库作为参数。</p>
-<p>对于实现该 trait 的类型，可以调用 <code>debug</code> 方法，该方法将返回一个实现了普通 <code>Debug</code> trait 的值，从而你可以编写如下内容：</p>
-<pre><code class="language-rust ignore">eprintln!(&quot;Expression = {:?}&quot;, expr.debug(db));
-</code></pre>
-<p>然后得到你想要的结果。</p>
-<p>对于所有 <code>#[input]</code>、<code>#[interned]</code> 和 <code>#[tracked]</code> 结构体，都会自动派生 <code>DeugWithDb</code> trait。</p>
-<h2 id="转发到普通的-debug-trait"><a class="header" href="#转发到普通的-debug-trait">转发到普通的 <code>Debug</code> trait</a></h2>
-<p>为了保持一致性，有时实现 <code>DebugWithDb</code> 是很有用的，即使对于 <code>Op</code> 这样只是普通枚举的类型也是如此。你可以这样做：</p>
-<pre><code class="language-rust ignore">
-</code></pre>
-<h2 id="编写单元测试"><a class="header" href="#编写单元测试">编写单元测试</a></h2>
-<p>我们既然已经准备好了 <code>DebugWithDb</code> 实现，就可以编写一个简单的单元测试工具了。</p>
-<p>下面的 <code>parse_string</code> 函数创建一个数据库，设置源文本，然后调用了解析器：</p>
-<pre><code class="language-rust ignore">/// Create a new database with the given source text and parse the result.
+                        <h1 id="defining-the-parser-debug-impls-and-testing"><a class="header" href="#defining-the-parser-debug-impls-and-testing">Defining the parser: debug impls and testing</a></h1>
+<p>As the final part of the parser, we need to write some tests.
+To do so, we will create a database, set the input source text, run the parser, and check the result.
+Before we can do that, though, we have to address one question: how do we inspect the value of an interned type like <code>Expression</code>?</p>
+<h2 id="the-debugwithdb-trait"><a class="header" href="#the-debugwithdb-trait">The <code>DebugWithDb</code> trait</a></h2>
+<p>Because an interned type like <code>Expression</code> just stores an integer, the traditional <code>Debug</code> trait is not very useful.
+To properly print a <code>Expression</code>, you need to access the Salsa database to find out what its value is.
+To solve this, <code>salsa</code> provides a <code>DebugWithDb</code> trait that acts like the regular <code>Debug</code>, but takes a database as argument.
+For types that implement this trait, you can invoke the <code>debug</code> method.
+This returns a temporary that implements the ordinary <code>Debug</code> trait, allowing you to write something like</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>eprintln!(&quot;Expression = {:?}&quot;, expr.debug(db));
+<span class="boring">}
+</span></code></pre></pre>
+<p>and get back the output you expect.</p>
+<p>The <code>DebugWithDb</code> trait is automatically derived for all <code>#[input]</code>, <code>#[interned]</code>, and <code>#[tracked]</code> structs.</p>
+<h2 id="forwarding-to-the-ordinary-debug-trait"><a class="header" href="#forwarding-to-the-ordinary-debug-trait">Forwarding to the ordinary <code>Debug</code> trait</a></h2>
+<p>For consistency, it is sometimes useful to have a <code>DebugWithDb</code> implementation even for types, like <code>Op</code>, that are just ordinary enums. You can do that like so:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span>
+<span class="boring">fn main() {
+</span><span class="boring">}
+</span></code></pre></pre>
+<h2 id="writing-the-unit-test"><a class="header" href="#writing-the-unit-test">Writing the unit test</a></h2>
+<p>Now that we have our <code>DebugWithDb</code> impls in place, we can write a simple unit test harness.
+The <code>parse_string</code> function below creates a database, sets the source text, and then invokes the parser:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Create a new database with the given source text and parse the result.
 /// Returns the statements and the diagnostics generated.
 #[cfg(test)]
 fn parse_string(source_text: &amp;str) -&gt; String {
@@ -200,9 +197,13 @@ fn parse_string(source_text: &amp;str) -&gt; String {
     // Format the result as a string and return it
     format!(&quot;{:#?}&quot;, (statements.debug(&amp;db), accumulated))
 }
-</code></pre>
-<p>结合 <a href="https://crates.io/crates/expect-test"><code>expect-test</code></a> crate，我们就可以编写这样的单元测试：</p>
-<pre><code class="language-rust ignore">#[test]
+<span class="boring">}
+</span></code></pre></pre>
+<p>Combined with the <a href="https://crates.io/crates/expect-test"><code>expect-test</code></a> crate, we can then write unit tests like this one:</p>
+<pre><pre class="playground"><code class="language-rust">
+<span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[test]
 fn parse_print() {
     let actual = parse_string(&quot;print 1 + 2&quot;);
     let expected = expect_test::expect![[r#&quot;
@@ -259,7 +260,8 @@ fn parse_print() {
         )&quot;#]];
     expected.assert_eq(&amp;actual);
 }
-</code></pre>
+<span class="boring">}
+</span></code></pre></pre>
 
                     </main>
 
@@ -309,7 +311,6 @@ fn parse_print() {
         <!-- Custom JS scripts -->
                 <script type="text/javascript" src="../mermaid.min.js"></script>
                 <script type="text/javascript" src="../mermaid-init.js"></script>
-                <script type="text/javascript" src="../theme/pagetoc.js"></script>
         
         
     </body>
