@@ -1,44 +1,51 @@
-# Defining the parser: debug impls and testing
+<!-- master#657b856 --->
 
-As the final part of the parser, we need to write some tests.
-To do so, we will create a database, set the input source text, run the parser, and check the result.
-Before we can do that, though, we have to address one question: how do we inspect the value of an interned type like `Expression`?
+# 定义解析器：debug 与测试
 
-## The `DebugWithDb` trait
+作为解析器的最后一部分，我们需要编写一些测试。为此，我们将创建一个数据库，设置输入源文本，运行解析器并检查结果。
 
-Because an interned type like `Expression` just stores an integer, the traditional `Debug` trait is not very useful.
-To properly print a `Expression`, you need to access the Salsa database to find out what its value is.
-To solve this, `salsa` provides a `DebugWithDb` trait that acts like the regular `Debug`, but takes a database as argument.
-For types that implement this trait, you can invoke the `debug` method.
-This returns a temporary that implements the ordinary `Debug` trait, allowing you to write something like
+然而，在我们能够做到这一点之前，必须先解决一个问题：如何查看像 `Expression` 这样的被 interned 的类型的值呢？
 
-```rust
+## `DebugWithDb` trait
+
+因为像 `Expression` 这样的 interned 类型只存储一个整数，所以传统的 `Debug` trait 并不是很有用。
+
+要正确打印 `Expression`，你需要访问 Salsa 数据库以找出它的值。
+
+为了解决这个问题，Salsa 提供了一个 `DebugWithDb` trait，它的行为类似于常规的 `Debug`，但以数据库作为参数。
+
+对于实现该 trait 的类型，可以调用 `debug` 方法，该方法将返回一个实现了普通 `Debug` trait 的值，从而你可以编写如下内容：
+
+```rust,ignore
 eprintln!("Expression = {:?}", expr.debug(db));
 ```
 
-and get back the output you expect.
+然后得到你想要的结果。
 
-The `DebugWithDb` trait is automatically derived for all `#[input]`, `#[interned]`, and `#[tracked]` structs.
+对于所有 `#[input]`、`#[interned]` 和 `#[tracked]` 结构体，都会自动派生 `DeugWithDb` trait。
 
-## Forwarding to the ordinary `Debug` trait
+## 转发到普通的 `Debug` trait 
 
-For consistency, it is sometimes useful to have a `DebugWithDb` implementation even for types, like `Op`, that are just ordinary enums. You can do that like so:
+为了保持一致性，有时实现 `DebugWithDb` 是很有用的，即使对于 `Op` 这样只是普通枚举的类型也是如此。你可以这样做：
 
-```rust
+```rust,ignore
 {{#include ../../../calc-example/calc/src/ir.rs:op_debug_impl}}
 ```
 
-## Writing the unit test
+## 编写单元测试
 
-Now that we have our `DebugWithDb` impls in place, we can write a simple unit test harness.
-The `parse_string` function below creates a database, sets the source text, and then invokes the parser:
+我们既然已经准备好了 `DebugWithDb` 实现，就可以编写一个简单的单元测试工具了。
 
-```rust
+下面的 `parse_string` 函数创建一个数据库，设置源文本，然后调用了解析器：
+
+```rust,ignore
 {{#include ../../../calc-example/calc/src/parser.rs:parse_string}}
 ```
 
-Combined with the [`expect-test`](https://crates.io/crates/expect-test) crate, we can then write unit tests like this one:
+结合 [`expect-test`] crate，我们就可以编写这样的单元测试：
 
-```rust
+```rust,ignore
 {{#include ../../../calc-example/calc/src/parser.rs:parse_print}}
 ```
+
+[`expect-test`]: https://crates.io/crates/expect-test

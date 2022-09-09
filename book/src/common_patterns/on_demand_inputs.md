@@ -1,18 +1,18 @@
-# On-Demand (Lazy) Inputs
+<!-- master#657b856 --->
 
-Salsa input queries work best if you can easily provide all of the inputs upfront.
-However sometimes the set of inputs is not known beforehand.
+# 按需（惰性）输入
 
-A typical example is reading files from disk.
-While it is possible to eagerly scan a particular directory and create an in-memory file tree in a salsa input query, a more straight-forward approach is to read the files lazily.
-That is, when someone requests the text of a file for the first time:
+如果你可以轻松地预先提供所有输入，则 Salsa 输入查询工作得最好。然而，有时输入集是事先不知道的。
 
-1. Read the file from disk and cache it.
-2. Setup a file-system watcher for this path.
-3. Invalidate the cached file once the watcher sends a change notification.
+一个典型的例子是从磁盘读取文件。虽然在 Salsa 输入查询中可以急切地扫描特定目录并创建内存中的文件树，但更直接的方法是延迟读取文件。
 
-This is possible to achieve in salsa, using a derived query and `report_synthetic_read` and `invalidate` queries.
-The setup looks roughly like this:
+也就是说，当某人第一次请求文件的文本时：
+
+1. 从磁盘读取文件并缓存它
+2. 为此路径设置文件系统监视器 (file-system watcher)
+3. 在监视器发送更改通知后，使缓存的文件无效
+
+这可以在 Salsa 中使用派生查询以及 `report_synthetic_read` 和 `invalidate` 查询来实现。大致设置如下：
 
 ```rust,ignore
 #[salsa::query_group(VfsDatabaseStorage)]
@@ -43,9 +43,13 @@ impl FileWatcher for MyDatabase {
 }
 ```
 
-- We declare the query as a derived query (which is the default).
-- In the query implementation, we don't call any other query and just directly read file from disk.
-- Because the query doesn't read any inputs, it will be assigned a `HIGH` durability by default, which we override with `report_synthetic_read`.
-- The result of the query is cached, and we must call `invalidate` to clear this cache.
+* 将查询声明为派生查询（这是默认）
+* 在查询实现中，不调用任何其他查询，只是直接从磁盘读取文件
+* 因为查询不读取任何输入，所以默认情况下将分配一个 `HIGH` 持久性，我们使用 `report_synthetic_read` 覆盖它
+* 查询的结果被缓存，我们必须调用 `invalidate` 来清除这个缓存
 
-A complete, runnable file-watching example can be found in [this git repo](https://github.com/ChristopherBiscardi/salsa-file-watch-example/blob/f968dc8ea13a90373f91d962f173de3fe6ae24cd/main.rs) along with [a write-up](https://www.christopherbiscardi.com/on-demand-lazy-inputs-for-incremental-computation-in-salsa-with-file-watching-powered-by-notify-in-rust) that explains more about the code and what it is doing.
+这个 [repo] 提供了一个完整的、可运行的文件监视示例，以及关于代码和它正在做的更多解释的[评述][write-up]。
+
+[repo]: https://github.com/ChristopherBiscardi/salsa-file-watch-example/blob/f968dc8ea13a90373f91d962f173de3fe6ae24cd/main.rs
+[write-up]: https://www.christopherbiscardi.com/on-demand-lazy-inputs-for-incremental-computation-in-salsa-with-file-watching-powered-by-notify-in-rust
+

@@ -1,3 +1,5 @@
-# Common patterns
+<!-- master#657b856 --->
 
-This section documents patterns for using Salsa.
+# 常见的模式
+
+这一节记录了使用 Salsa 的模式。
