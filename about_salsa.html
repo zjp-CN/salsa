@@ -184,11 +184,11 @@
                         <div class="sidetoc"><nav class="pagetoc"></nav></div>
 
                         <!-- master#1363d78 --->
-<h1 id="什么是-salsa"><a class="header" href="#什么是-salsa">什么是 salsa</a></h1>
+<h1 id="什么是-salsa"><a class="header" href="#什么是-salsa">什么是 Salsa</a></h1>
 <img src="https://raw.githubusercontent.com/salsa-rs/logo/main/FerrisSalsa4-01.svg" alt="" width="300"/>
 <p>Salsa 是一个用于编写增量 (incremental) 、按需 (on-demand) 程序的 Rust 框架 ——
 这些程序希望适应其输入的变化，持续地产生最新的输出。</p>
-<p>Salsa 以 rustc 构建的增量重新编译技术为基础，许多（但不是所有）使用 salsa
+<p>Salsa 以 rustc 构建的增量重新编译技术为基础，许多（但不是所有）使用 Salsa
 的人都把它用来构建编译器或其他类似的工具。</p>
 <p>如果你想了解更多关于 salsa 的信息，请查看：</p>
 <ul>
@@ -196,7 +196,16 @@
 <li><a href="./tutorial.html">教程</a>：一个详细的说明</li>
 <li>一些<a href="./videos.html">视频</a>，尽管其中的内容已经过时</li>
 </ul>
-<p>如果你想讨论 salsa，或者想要贡献，请转到我们的 <a href="https://salsa.zulipchat.com/">Zulip</a>。</p>
+<p>如果你想讨论 Salsa，或者想要贡献，请转到我们的 <a href="https://salsa.zulipchat.com/">Zulip</a>。</p>
+<blockquote>
+<p>译者注：</p>
+<p><a href="https://github.com/salsa-rs/salsa">Salsa</a> 作者为 Niko Matsakis， <a href="https://github.com/rust-lang/rust-analyzer/blob/c6c0ac26456093b71837e20b0ff51655e0c230f7/docs/dev/guide.md#salsa">Rust-Analyzer</a> 和 <a href="https://github.com/apollographql/apollo-rs/blob/632eda9abb3438786ecbad8ecf9e17cb99ac548c/crates/apollo-compiler/README.md#usage">apollo-rs 编译器</a> 都使用了它。</p>
+<p>注意：这本书跟随目前正在设计的 Salsa2022（代码位于 <a href="https://github.com/salsa-rs/salsa/tree/master/components">components</a> 文件夹下，而不是 src 文件夹下），此外</p>
+<ul>
+<li>很多篇章仍然需要更新（Niko 为此正在提交一个 <a href="https://github.com/salsa-rs/salsa/pull/396">PR</a>）</li>
+<li><a href="https://docs.rs/salsa/latest/salsa/">docs.rs</a> 上的文档不是 2022 版，最好自己使用 <code>cargo doc --no-deps --document-private-items --workspace</code> 进行本地构建</li>
+</ul>
+</blockquote>
 
                     </main>
 
